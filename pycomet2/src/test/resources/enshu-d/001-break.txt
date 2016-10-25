@@ -1,0 +1,11 @@
+load 001.com ... done.
+PR  #0000 [ NOP                            ]  STEP 0
+SP  #ff00(  65280) FR(OF, SF, ZF)  001  (      1)
+GR0 #0000(      0) GR1 #0000(      0) GR2 #0000(      0) GR3: #0000(      0)
+GR4 #0000(      0) GR5 #0000(      0) GR6 #0000(      0) GR7: #0000(      0)
+pycomet2> pycomet2> pycomet2> PR  #0007 [ NOP                            ]  STEP 4
+SP  #ff00(  65280) FR(OF, SF, ZF)  001  (      1)
+GR0 #0000(      0) GR1 #0000(      0) GR2 #0000(      0) GR3: #0000(      0)
+GR4 #0000(      0) GR5 #0000(      0) GR6 #0000(      0) GR7: #04c0(   1216)
+pycomet2> 0: #0007
+pycomet2>

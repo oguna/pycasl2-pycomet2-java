@@ -1,0 +1,909 @@
+CASL    START   BEGIN
+BEGIN   NOP
+        LAD     GR6,0
+        LAD     GR7,LIBBUF
+        JUMP    MAIN
+;***************************************
+;MAIN
+;***************************************
+MAIN    NOP
+        LAD     GR1,20          ;一時変数領域を確保
+        SUBA    GR8,GR1         ;
+;<Assignment> n = 20
+        LAD     GR1,20          ;TEMP0 = 20
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;n = TEMP0
+        ST      GR1,GVAR3
+;<Assignment> a[1] = 35
+        LAD     GR1,35          ;TEMP0 = 35
+        ST      GR1,0,GR8
+        LAD     GR1,1           ;TEMP1 = 1
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[2] = 68
+        LAD     GR1,68          ;TEMP0 = 68
+        ST      GR1,0,GR8
+        LAD     GR1,2           ;TEMP1 = 2
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[3] = 94
+        LAD     GR1,94          ;TEMP0 = 94
+        ST      GR1,0,GR8
+        LAD     GR1,3           ;TEMP1 = 3
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[4] = 7
+        LAD     GR1,7           ;TEMP0 = 7
+        ST      GR1,0,GR8
+        LAD     GR1,4           ;TEMP1 = 4
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[5] = 88
+        LAD     GR1,88          ;TEMP0 = 88
+        ST      GR1,0,GR8
+        LAD     GR1,5           ;TEMP1 = 5
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[6] = 5
+        LAD     GR1,5           ;TEMP0 = 5
+        ST      GR1,0,GR8
+        LD      GR2,0,GR8       ;TEMP1 := - TEMP0
+        LAD     GR1,0
+        SUBA    GR1,GR2
+        ST      GR1,1,GR8
+        LAD     GR1,6           ;TEMP0 = 6
+        ST      GR1,0,GR8
+        LD      GR3,1,GR8       ;a [ TEMP0 ] = TEMP1
+        LD      GR1,0,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[7] = 3
+        LAD     GR1,3           ;TEMP0 = 3
+        ST      GR1,0,GR8
+        LD      GR2,0,GR8       ;TEMP1 := - TEMP0
+        LAD     GR1,0
+        SUBA    GR1,GR2
+        ST      GR1,1,GR8
+        LAD     GR1,7           ;TEMP0 = 7
+        ST      GR1,0,GR8
+        LD      GR3,1,GR8       ;a [ TEMP0 ] = TEMP1
+        LD      GR1,0,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[8] = 12
+        LAD     GR1,12          ;TEMP0 = 12
+        ST      GR1,0,GR8
+        LAD     GR1,8           ;TEMP1 = 8
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[9] = 35
+        LAD     GR1,35          ;TEMP0 = 35
+        ST      GR1,0,GR8
+        LAD     GR1,9           ;TEMP1 = 9
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[10] = 9
+        LAD     GR1,9           ;TEMP0 = 9
+        ST      GR1,0,GR8
+        LAD     GR1,10          ;TEMP1 = 10
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[11] = 6
+        LAD     GR1,6           ;TEMP0 = 6
+        ST      GR1,0,GR8
+        LD      GR2,0,GR8       ;TEMP1 := - TEMP0
+        LAD     GR1,0
+        SUBA    GR1,GR2
+        ST      GR1,1,GR8
+        LAD     GR1,11          ;TEMP0 = 11
+        ST      GR1,0,GR8
+        LD      GR3,1,GR8       ;a [ TEMP0 ] = TEMP1
+        LD      GR1,0,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[12] = 3
+        LAD     GR1,3           ;TEMP0 = 3
+        ST      GR1,0,GR8
+        LAD     GR1,12          ;TEMP1 = 12
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[13] = 0
+        LAD     GR1,0           ;TEMP0 = 0
+        ST      GR1,0,GR8
+        LAD     GR1,13          ;TEMP1 = 13
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[14] = 2
+        LAD     GR1,2           ;TEMP0 = 2
+        ST      GR1,0,GR8
+        LD      GR2,0,GR8       ;TEMP1 := - TEMP0
+        LAD     GR1,0
+        SUBA    GR1,GR2
+        ST      GR1,1,GR8
+        LAD     GR1,14          ;TEMP0 = 14
+        ST      GR1,0,GR8
+        LD      GR3,1,GR8       ;a [ TEMP0 ] = TEMP1
+        LD      GR1,0,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[15] = 74
+        LAD     GR1,74          ;TEMP0 = 74
+        ST      GR1,0,GR8
+        LAD     GR1,15          ;TEMP1 = 15
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[16] = 88
+        LAD     GR1,88          ;TEMP0 = 88
+        ST      GR1,0,GR8
+        LAD     GR1,16          ;TEMP1 = 16
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[17] = 52
+        LAD     GR1,52          ;TEMP0 = 52
+        ST      GR1,0,GR8
+        LAD     GR1,17          ;TEMP1 = 17
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[18] = 43
+        LAD     GR1,43          ;TEMP0 = 43
+        ST      GR1,0,GR8
+        LAD     GR1,18          ;TEMP1 = 18
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[19] = 5
+        LAD     GR1,5           ;TEMP0 = 5
+        ST      GR1,0,GR8
+        LAD     GR1,19          ;TEMP1 = 19
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> a[20] = 4
+        LAD     GR1,4           ;TEMP0 = 4
+        ST      GR1,0,GR8
+        LAD     GR1,20          ;TEMP1 = 20
+        ST      GR1,1,GR8
+        LD      GR3,0,GR8       ;a [ TEMP1 ] = TEMP0
+        LD      GR1,1,GR8
+        LAD     GR4,1
+        SUBA    GR1,GR4
+        ST      GR3,GVAR6,GR1
+;<Assignment> min = a[1]
+        LAD     GR1,1           ;TEMP1 = 1
+        ST      GR1,1,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP1]
+        LD      GR2,1,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;min = TEMP0
+        ST      GR1,GVAR4
+;<Assignment> max = min
+        LD      GR1,GVAR4       ;TEMP0 = min
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;max = TEMP0
+        ST      GR1,GVAR5
+;<Assignment> i = 2
+        LAD     GR1,2           ;TEMP0 = 2
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;i = TEMP0
+        ST      GR1,GVAR0
+;<while-begin>
+        JUMP    LABEL2          ;goto LABEL2
+;<while-action>
+LABEL1  NOP                     ;LABEL1
+;<Assignment> u = a[i]
+        LD      GR1,GVAR0       ;TEMP1 = i
+        ST      GR1,1,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP1]
+        LD      GR2,1,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;u = TEMP0
+        ST      GR1,GVAR1
+;<Assignment> v = a[(i + 1)]
+        LD      GR1,GVAR0       ;TEMP1 = i
+        ST      GR1,1,GR8
+        LAD     GR1,1           ;TEMP2 = 1
+        ST      GR1,2,GR8
+        LD      GR1,1,GR8       ;TEMP3 := TEMP1 + TEMP2
+        LD      GR2,2,GR8
+        ADDA    GR1,GR2
+        ST      GR1,3,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP3]
+        LD      GR2,3,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;v = TEMP0
+        ST      GR1,GVAR2
+;<if>
+        LD      GR1,GVAR1       ;TEMP0 = u
+        ST      GR1,0,GR8
+        LD      GR1,GVAR2       ;TEMP1 = v
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 > TEMP1 goto LABEL5
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JPL     LABEL5
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL6          ;goto LABEL6
+LABEL5  NOP                     ;LABEL5
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL6  NOP                     ;LABEL6
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL3
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL3
+;<then>
+;<if>
+        LD      GR1,GVAR1       ;TEMP0 = u
+        ST      GR1,0,GR8
+        LD      GR1,GVAR5       ;TEMP1 = max
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 > TEMP1 goto LABEL8
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JPL     LABEL8
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL9          ;goto LABEL9
+LABEL8  NOP                     ;LABEL8
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL9  NOP                     ;LABEL9
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL7
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL7
+;<then>
+;<Assignment> max = u
+        LD      GR1,GVAR1       ;TEMP0 = u
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;max = TEMP0
+        ST      GR1,GVAR5
+LABEL7  NOP                     ;LABEL7
+;<endif>
+;<if>
+        LD      GR1,GVAR2       ;TEMP0 = v
+        ST      GR1,0,GR8
+        LD      GR1,GVAR4       ;TEMP1 = min
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 < TEMP1 goto LABEL11
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JMI     LABEL11
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL12         ;goto LABEL12
+LABEL11 NOP                     ;LABEL11
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL12 NOP                     ;LABEL12
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL10
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL10
+;<then>
+;<Assignment> min = v
+        LD      GR1,GVAR2       ;TEMP0 = v
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;min = TEMP0
+        ST      GR1,GVAR4
+LABEL10 NOP                     ;LABEL10
+;<endif>
+        JUMP    LABEL4          ;goto LABEL4
+;<else>
+LABEL3  NOP                     ;LABEL3
+;<if>
+        LD      GR1,GVAR2       ;TEMP0 = v
+        ST      GR1,0,GR8
+        LD      GR1,GVAR5       ;TEMP1 = max
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 > TEMP1 goto LABEL14
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JPL     LABEL14
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL15         ;goto LABEL15
+LABEL14 NOP                     ;LABEL14
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL15 NOP                     ;LABEL15
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL13
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL13
+;<then>
+;<Assignment> max = v
+        LD      GR1,GVAR2       ;TEMP0 = v
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;max = TEMP0
+        ST      GR1,GVAR5
+LABEL13 NOP                     ;LABEL13
+;<endif>
+;<if>
+        LD      GR1,GVAR1       ;TEMP0 = u
+        ST      GR1,0,GR8
+        LD      GR1,GVAR4       ;TEMP1 = min
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 < TEMP1 goto LABEL17
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JMI     LABEL17
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL18         ;goto LABEL18
+LABEL17 NOP                     ;LABEL17
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL18 NOP                     ;LABEL18
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL16
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL16
+;<then>
+;<Assignment> min = u
+        LD      GR1,GVAR1       ;TEMP0 = u
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;min = TEMP0
+        ST      GR1,GVAR4
+LABEL16 NOP                     ;LABEL16
+;<endif>
+LABEL4  NOP                     ;LABEL4
+;<endif>
+;<Assignment> i = (i + 2)
+        LD      GR1,GVAR0       ;TEMP0 = i
+        ST      GR1,0,GR8
+        LAD     GR1,2           ;TEMP1 = 2
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;TEMP2 := TEMP0 + TEMP1
+        LD      GR2,1,GR8
+        ADDA    GR1,GR2
+        ST      GR1,2,GR8
+        LD      GR1,2,GR8       ;i = TEMP2
+        ST      GR1,GVAR0
+;<while-condition> (i < n)
+LABEL2  NOP                     ;LABEL2
+        LD      GR1,GVAR0       ;TEMP0 = i
+        ST      GR1,0,GR8
+        LD      GR1,GVAR3       ;TEMP1 = n
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 < TEMP1 goto LABEL19
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JMI     LABEL19
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL20         ;goto LABEL20
+LABEL19 NOP                     ;LABEL19
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL20 NOP                     ;LABEL20
+        LAD     GR1,1           ;TEMP0 = true
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL1
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL1
+;<while-end>
+;<if>
+        LD      GR1,GVAR0       ;TEMP0 = i
+        ST      GR1,0,GR8
+        LD      GR1,GVAR3       ;TEMP1 = n
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 = TEMP1 goto LABEL22
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JZE     LABEL22
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL23         ;goto LABEL23
+LABEL22 NOP                     ;LABEL22
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL23 NOP                     ;LABEL23
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL21
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL21
+;<then>
+;<if>
+        LD      GR1,GVAR3       ;TEMP1 = n
+        ST      GR1,1,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP1]
+        LD      GR2,1,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,GVAR5       ;TEMP1 = max
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 > TEMP1 goto LABEL26
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JPL     LABEL26
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL27         ;goto LABEL27
+LABEL26 NOP                     ;LABEL26
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL27 NOP                     ;LABEL27
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL24
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL24
+;<then>
+;<Assignment> max = a[n]
+        LD      GR1,GVAR3       ;TEMP1 = n
+        ST      GR1,1,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP1]
+        LD      GR2,1,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;max = TEMP0
+        ST      GR1,GVAR5
+        JUMP    LABEL25         ;goto LABEL25
+;<else>
+LABEL24 NOP                     ;LABEL24
+;<if>
+        LD      GR1,GVAR3       ;TEMP1 = n
+        ST      GR1,1,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP1]
+        LD      GR2,1,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,GVAR4       ;TEMP1 = min
+        ST      GR1,1,GR8
+        LD      GR1,0,GR8       ;if TEMP0 < TEMP1 goto LABEL29
+        LD      GR2,1,GR8
+        CPA     GR1,GR2
+        JMI     LABEL29
+        LAD     GR1,0           ;TEMP2 = false
+        ST      GR1,2,GR8
+        JUMP    LABEL30         ;goto LABEL30
+LABEL29 NOP                     ;LABEL29
+        LAD     GR1,1           ;TEMP2 = true
+        ST      GR1,2,GR8
+LABEL30 NOP                     ;LABEL30
+        LAD     GR1,0           ;TEMP0 = false
+        ST      GR1,0,GR8
+        LD      GR1,2,GR8       ;if TEMP2 = TEMP0 goto LABEL28
+        LD      GR2,0,GR8
+        CPA     GR1,GR2
+        JZE     LABEL28
+;<then>
+;<Assignment> min = a[n]
+        LD      GR1,GVAR3       ;TEMP1 = n
+        ST      GR1,1,GR8
+        LAD     GR1,GVAR6       ;TEMP0 = a [TEMP1]
+        LD      GR2,1,GR8
+        LAD     GR3,1
+        SUBA    GR2,GR3
+        LD      GR1,GVAR6,GR2
+        ST      GR1,0,GR8
+        LD      GR1,0,GR8       ;min = TEMP0
+        ST      GR1,GVAR4
+LABEL28 NOP                     ;LABEL28
+;<endif>
+LABEL25 NOP                     ;LABEL25
+;<endif>
+;<writeln> writeln('MAX = ', max, ' , MIN = ', min)
+        LAD     GR1,CONST0      ;TEMP0 = 'MAX = '
+        ST      GR1,0,GR8
+        LD      GR1,GVAR5       ;TEMP1 = max
+        ST      GR1,1,GR8
+        LAD     GR1,CONST1      ;TEMP2 = ' , MIN = '
+        ST      GR1,2,GR8
+        LD      GR1,GVAR4       ;TEMP3 = min
+        ST      GR1,3,GR8
+        LD      GR2,0,GR8       ;writeln TEMP0 TEMP1 TEMP2 TEMP3
+        LAD     GR1,6
+        CALL    WRTSTR
+        LD      GR2,1,GR8
+        CALL    WRTINT
+        LD      GR2,2,GR8
+        LAD     GR1,9
+        CALL    WRTSTR
+        LD      GR2,3,GR8
+        CALL    WRTINT
+        CALL    WRTLN
+LABEL21 NOP                     ;LABEL21
+;<endif>
+        LAD     GR8,20,GR8      ;一時変数領域を解放
+        RET
+;================================================================
+GVAR0   DS      1               ;i : integer
+GVAR1   DS      1               ;u : integer
+GVAR2   DS      1               ;v : integer
+GVAR3   DS      1               ;n : integer
+GVAR4   DS      1               ;min : integer
+GVAR5   DS      1               ;max : integer
+GVAR6   DS      20              ;a : integer[1..20]
+CONST0  DC      'MAX = '
+CONST1  DC      ' , MIN = '
+;================================================================
+LIBBUF  DS      256
+        END
+;====================
+; MULT: 掛け算を行うサブルーチン
+; GR1 * GR2 -> GR2
+MULT	START
+	PUSH	0,GR1 ; GR1 の内容をスタックに退避
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	LAD	GR3,0 ; GR3 を初期化
+	LD	GR4,GR2
+	JPL	LOOP
+	XOR	GR4,=#FFFF
+	ADDA	GR4,=1
+LOOP	SRL	GR4,1
+	JOV	ONE
+	JUMP	ZERO
+ONE	ADDL	GR3,GR1
+ZERO	SLL	GR1,1
+	AND	GR4,GR4
+	JNZ	LOOP
+	CPA	GR2,=0
+	JPL	END
+	XOR	GR3,=#FFFF
+	ADDA	GR3,=1
+END	LD	GR2,GR3
+	POP	GR4
+	POP	GR3
+	POP	GR1
+	RET
+	END
+;====================
+; DIV 割り算を行うサブルーチン
+; GR1 / GR2 -> 商は GR2, 余りは GR1
+DIV	START
+	PUSH	0, GR3
+	ST	GR1, A
+	ST	GR2, B
+	CPA	GR1, =0
+	JPL	SKIPA
+	XOR	GR1, =#FFFF
+	ADDA	GR1, =1
+SKIPA	CPA	GR2, =0
+	JZE	SKIPD
+	JPL	SKIPB
+	XOR	GR2, =#FFFF
+	ADDA	GR2, =1
+SKIPB	LD	GR3, =0
+LOOP	CPA	GR1, GR2
+	JMI	STEP
+	SUBA	GR1, GR2
+	LAD	GR3, 1, GR3
+	JUMP	LOOP
+STEP	LD	GR2, GR3
+	LD	GR3, A
+	CPA	GR3, =0
+	JPL	SKIPC
+	XOR	GR1, =#FFFF
+	ADDA	GR1, =1
+SKIPC	XOR	GR3, B
+	CPA	GR3, =0
+        JZE     SKIPD
+	JPL	SKIPD
+	XOR	GR2, =#FFFF
+	ADDA	GR2, =1
+SKIPD	POP	GR3
+	RET
+A	DS	1
+B	DS	1
+	END
+;====================
+; 入力装置から数値データを読み込み，
+; その内容を GR2 が指すアドレスに格納するサブルーチン
+RDINT	START
+	PUSH	0,GR1 ; GR1 の内容をスタックに退避
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	PUSH	0,GR5 ; GR5 の内容をスタックに退避
+	PUSH	0,GR6 ; GR6 の内容をスタックに退避
+	LD	GR5,GR2 ; GR2 が指す番地を GR5 にコピー
+	LD	GR2,=0 ; GR2 を初期化
+	LD	GR3,=0 ; GR3 を初期化
+	IN	INAREA,INLEN ; 入力を受け取る
+	; 入力がnullかどうかのチェック
+	CPA	GR3,INLEN
+	JZE	ERROR
+	; 最初の文字が'-'かどうかのチェック
+	LD	GR4,INAREA,GR3
+	LAD	GR3,1,GR3
+	LD	GR6,GR4 ; GR6 に入力された先頭の文字を保存
+	CPL	GR4,=#002D ; '-'かどうか
+	JZE	LOOP
+	CPL	GR4,='0' ; 数値かどうかのチェック
+	JMI	ERROR
+	CPL	GR4,='9'
+	JPL	ERROR
+	XOR	GR4,=#0030 ; 数値だったら変換
+	ADDA	GR2,GR4
+	; 「すでに読み込んだ数値を10倍して，
+	; 新しく読み込んだ数値と足す．」を繰り返す
+LOOP	CPA	GR3,INLEN
+	JZE	CODE ; 入力された文字数とGR3が同じであればループを抜ける
+	LD	GR1,=10
+	CALL	MULT ; GR2 の値を10倍する
+	LD	GR4,INAREA,GR3
+	CPL	GR4,='0' ; 数値かどうかのチェック
+	JMI	ERROR
+	CPL	GR4,='9'
+	JPL	ERROR
+	XOR	GR4,=#0030 ; GR4 の内容を数値に変換
+	ADDA	GR2,GR4 ; GR2 に GR1 の内容を足す
+	LAD	GR3,1,GR3; GR3 (ポインタ)をインクリメント
+	JUMP	LOOP
+	; 最初の文字が '-'であった場合は，-1倍する
+CODE	CPL	GR6,=#002D
+	JNZ	END
+	XOR	GR2,=#FFFF
+	LAD	GR2,1,GR2
+	JUMP	END
+	; エラーを出力する
+ERROR	OUT	ERRSTR,ERRLEN
+END	ST	GR2,0,GR5 ; GR2 の内容を GR5 が指す番地に格納する
+	LD	GR2,GR5 ; GR5 が指す番地を GR2 に戻す
+	POP	GR6
+	POP	GR5
+	POP	GR4
+	POP	GR3
+	POP	GR1
+	RET
+ERRSTR	DC	'illegal input'
+ERRLEN	DC	13
+INAREA	DS	6
+INLEN	DS	1
+	END
+;====================
+; 入力装置から文字を読み込み，
+; その内容を GR2 が指すアドレスに格納するサブルーチン
+RDCH	START
+	IN	INCHAR,INLEN
+	LD	GR1,INCHAR
+	ST	GR1,0,GR2
+	RET
+INCHAR	DS	1
+INLEN	DS	1
+	END
+;====================
+; 入力装置から，GR1の文字数を読み込む．
+; 読み込んだ文字列は，GR2 が指すアドレスから順に格納される
+RDSTR	START
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	PUSH	0,GR5 ; GR5 の内容をスタックに退避
+	LAD	GR4,0 ; GR4 を初期化
+	IN	INSTR,INLEN
+LOOP	CPA	GR4,GR1
+	JZE	END ; GR1で指定された文字数を超えたら終わり
+	CPA	GR4,INLEN
+	JZE	END ; 入力された文字数を超えたら終わり
+	LD	GR5,GR2
+	ADDA	GR5,GR4 ; 文字の格納先番地を計算
+	LD	GR3,INSTR,GR4
+	ST	GR3,0,GR5
+	LAD	GR4,1,GR4
+	JUMP	LOOP
+END	POP	GR5
+	POP	GR4
+	POP	GR3
+	RET
+INSTR	DS	256
+INLEN	DS	1
+	END
+;====================
+; 入力装置からの文字列を改行まで読み飛ばすサブルーチン
+RDLN	START
+	IN	INAREA,INLEN
+	RET
+INAREA	DS	256
+INLEN	DS	1
+	END
+;====================
+; GR2 の内容（数値データ）を出力装置に書き出すサブルーチン
+; このサブルーチンが呼ばれたとき，
+; GR7 には，出力用番地の先頭アドレスが，
+; GR6 には，現在出力用番地に入っている文字数が，
+; それぞれ格納されている．
+WRTINT  START
+	PUSH    0,GR1 ; GR1の内容をスタックに退避
+        PUSH    0,GR2 ; GR2の内容をスタックに退避
+	PUSH	0,GR3 ; GR3の内容をスタックに退避
+	PUSH	0,GR2 ; 数値データをもう一度スタックに退避
+	LD	GR3,=0 ; GR3 はインデックスとして用いる
+	; 数値データが負数である場合は，正の数に変換
+	CPA	GR2,=0
+	JPL	LOOP1
+	XOR	GR2,=#FFFF
+	ADDA	GR2,=1
+	; 数値データを変換しながら，バッファに格納
+LOOP1	LD	GR1,GR2
+	LD	GR2,=10
+	CALL	DIV
+	XOR	GR1,=#0030
+	ST	GR1,BUFFER,GR3
+	LAD	GR3,1,GR3
+	CPA	GR2,=0
+	JNZ	LOOP1
+	; 数値データが負数であれば，'-'を追加
+	POP	GR2
+	CPA	GR2,=0
+	JZE	LOOP2
+	JPL	LOOP2
+	LD	GR1,='-'
+	ST	GR1,BUFFER,GR3
+	LAD	GR3,1,GR3
+	; BUFFER を逆順にたどりながら，出力用バッファに格納
+LOOP2	LAD	GR3,-1,GR3
+	LD	GR1,BUFFER,GR3
+	LD	GR2,GR7
+	ADDA	GR2,GR6
+	ST	GR1,0,GR2
+	LAD	GR6,1,GR6
+	CPA	GR3,=0
+	JNZ	LOOP2
+END	POP	GR3
+	POP	GR2
+	POP	GR1
+	RET
+BUFFER	DS	6
+	END
+;====================
+; GR2 の内容（文字）を出力装置に書き出すサブルーチン
+; このサブルーチンが呼ばれたとき，
+; GR7 には，出力用番地の先頭アドレスが，
+; GR6 には，現在出力用番地に入っている文字数が，
+; それぞれ格納されている．
+WRTCH	START
+	PUSH	0,GR1 ; GR1 の内容をスタックに退避
+	LD	GR1,GR7
+	ADDA	GR1,GR6 ; GR1 に次の文字を格納する番地を代入
+	ST	GR2,0,GR1
+	LAD	GR6,1,GR6
+	POP	GR1
+	RET
+	END
+;====================
+; GR2 の指すメモリ番地から，長さ GR1 の文字列を出力装置に書き出すサブルーチン
+; このサブルーチンが呼ばれたとき，
+; GR7 には，出力用番地の先頭アドレスが，
+; GR6 には，現在出力用番地に入っている文字数が，
+; それぞれ格納されている．
+WRTSTR	START
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	PUSH	0,GR5 ; GR5 の内容をスタックに退避
+	LAD	GR3, 0 ; GR3 は制御変数として用いる
+LOOP	CPA	GR3,GR1
+	JZE	END
+	LD	GR4,GR2
+	ADDA	GR4,GR3 ; 出力する文字の格納番地を計算
+	LD	GR5,0,GR4 ; 出力する文字をレジスタにコピー
+	LD	GR4,GR7
+	ADDA	GR4,GR6 ; 出力先の番地を計算
+	ST	GR5,0,GR4 ; 出力装置に書き出し
+	LAD	GR3,1,GR3
+	LAD	GR6,1,GR6
+	JUMP	LOOP
+END	POP	GR5
+	POP	GR4
+	POP	GR3
+	RET
+	END
+;====================
+; 改行を出力装置に書き出すサブルーチン
+; 実質的には，GR7で始まるアドレス番地から長さGR6の文字列を出力する
+WRTLN	START
+	PUSH	0,GR1
+	PUSH	0,GR2
+	PUSH	0,GR3
+	ST	GR6,OUTLEN
+	LAD	GR1,0
+LOOP	CPA	GR1,OUTLEN
+	JZE	END
+	LD	GR2,GR7
+	ADDA	GR2,GR1
+	LD	GR3,0,GR2
+	ST	GR3,OUTSTR,GR1
+	LAD	GR1,1,GR1
+	JUMP	LOOP
+END	OUT	OUTSTR,OUTLEN
+	LAD	GR6,0 ; 文字列を出力して，GR6 を初期化
+	POP	GR3
+	POP	GR2
+	POP	GR1
+	RET
+OUTSTR	DS	256
+OUTLEN	DS	1
+	END

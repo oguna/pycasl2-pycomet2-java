@@ -1,0 +1,4 @@
+rootProject.name = 'pycasl2-pycomet2-java'
+include 'pycasl2'
+include 'pycomet2'
+

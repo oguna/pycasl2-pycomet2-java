@@ -1,0 +1,12 @@
+####################
+## CASL assembler ##
+####################
+
+## loading
+
+## relocating
+
+## executing
+Input x
+Input y
+gcd(36, 48) = 12

@@ -1,0 +1,43 @@
+####################
+## CASL assembler ##
+####################
+
+## loading
+
+## relocating
+
+## executing
+ ANARISE 345 = 
+               3^1
+               5^1
+               23^1
+ ANARISE 888 = 
+               2^3
+               3^1
+               37^1
+ ANARISE 119 = 
+               7^1
+               17^1
+ ANARISE 46 = 
+               2^1
+               23^1
+ ANARISE 805 = 
+               5^1
+               7^1
+               23^1
+ ANARISE 708 = 
+               2^2
+               3^1
+               59^1
+ ANARISE 59 = 
+               59^1
+ ANARISE 26 = 
+               2^1
+               13^1
+ ANARISE 465 = 
+               3^1
+               5^1
+               31^1
+ ANARISE 928 = 
+               2^5
+               29^1

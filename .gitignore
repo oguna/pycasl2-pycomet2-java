@@ -1,0 +1,8 @@
+/.idea
+/build
+/.gradle
+/tmp
+/pycasl2/tmp
+/pycasl2/build
+/pycomet2/build
+/pycomet2/tmp

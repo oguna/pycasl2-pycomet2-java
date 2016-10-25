@@ -1,0 +1,10 @@
+####################
+## CASL assembler ##
+####################
+
+## loading
+
+## relocating
+
+## executing
+MAX = 94 , MIN = -6
