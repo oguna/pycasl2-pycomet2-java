@@ -146,13 +146,9 @@ public class PyCasl2 {
             this.getLine();
             this.isValidProgram();
         } catch (Error e) {
-            e.report();
-            System.exit(1);
+            throw new RuntimeException(e.getMessage());
         } catch (Exception e) {
-            System.err.println("Error: Unexpected error at the following line.");
-            System.err.println(String.format("Line %d: %s", currentLineNumber, currentSrc));
-            System.err.println(e.toString());
-            System.exit(1);
+            throw new RuntimeException("Error: Unexpected error.\nError: Unexpected error.\nException type:" + e.getClass() + "\n" + e.toString());
         } finally {
             fp.close();
         }
@@ -161,13 +157,9 @@ public class PyCasl2 {
         try {
             codeList = this.tmpCode.stream().filter(Objects::nonNull).map(this::replaceLabel).collect(Collectors.toList());
         } catch (Error e) {
-            e.report();
-            System.exit(1);
+            throw new RuntimeException(e.getMessage());
         } catch (Exception e) {
-            System.err.println("Error: Unexpected error.");
-            System.err.println("Exception type:" + e.getClass());
-            System.err.println(e.toString());
-            System.exit(1);
+            throw new RuntimeException("Error: Unexpected error.\nError: Unexpected error.\nException type:" + e.getClass() + "\n" + e.toString());
         }
 
         codeList.addAll(this.additionalDC);
@@ -306,9 +298,7 @@ public class PyCasl2 {
 
         result = Pattern.compile(pattern).matcher(line);
         if (!result.matches()) {
-            System.err.println(String.format("Line %d: Invalid line was found.", lineNumber));
-            System.err.println(line);
-            System.exit(1);
+            throw new RuntimeException(String.format("Line %d: Invalid line was found.", lineNumber));
         }
 
         String label = result.group("label");
@@ -330,8 +320,7 @@ public class PyCasl2 {
         if (inst.label != null && !inst.label.isEmpty()) {
             String labelName = currentScope + "." + inst.label;
             if (this.symbols.containsKey(labelName)) {
-                System.err.println(String.format("Line %d: Label \"%s\" is already defined.", inst.lineNumber, inst.label));
-                System.exit(1);
+                throw new RuntimeException(String.format("Line %d: Label \"%s\" is already defined.", inst.lineNumber, inst.label));
             }
             this.symbols.put(labelName, new Label(labelName, inst.lineNumber, this.file, this.addr));
         }
@@ -474,9 +463,7 @@ public class PyCasl2 {
             return null;
         }
         if (!opTable.containsKey(inst.op)) {
-            System.err.println(String.format("Line %d: Invalid instruction \"%s\" was found.", inst.lineNumber, inst.op));
-            System.exit(1);
-            throw new RuntimeException();
+            throw new RuntimeException(String.format("Line %d: Invalid instruction \"%s\" was found.", inst.lineNumber, inst.op));
         }
         if (-100 < opTable.get(inst.op).getKey() && opTable.get(inst.op).getKey() < 0) {
             if (this.isArgRegister(inst.args[1])) {
@@ -487,8 +474,7 @@ public class PyCasl2 {
         }
         if (opTable.get(inst.op).getKey() == -100) {
             if (inst.label == null) {
-                System.err.println(String.format("Line %d: Label should be defined for START.", inst.lineNumber));
-                System.exit(1);
+                throw new RuntimeException(String.format("Line %d: Label should be defined for START.", inst.lineNumber));
             }
             this.currentScope = inst.label;
             if (this.startFound) {
@@ -571,11 +557,16 @@ public class PyCasl2 {
         } else {
             String comName = argList.size() < 2 ? argList.get(0).replaceAll("\\.[^.]+$", ".com") : argList.get(1);
             PyCasl2 casl2 = new PyCasl2();
-            ByteCode[] x = casl2.assemble(new File(argList.get(0)));
-            if (dump) {
-                casl2.dump(x);
+            try {
+                ByteCode[] x = casl2.assemble(new File(argList.get(0)));
+                if (dump) {
+                    casl2.dump(x);
+                }
+                casl2.write(comName, x);
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+                System.exit(1);
             }
-            casl2.write(comName, x);
         }
     }
 }

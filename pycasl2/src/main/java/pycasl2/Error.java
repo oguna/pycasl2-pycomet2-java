@@ -10,7 +10,8 @@ class Error extends RuntimeException {
         this.src = src;
     }
 
-    void report() {
-        System.err.println(String.format("Error: %s%nLine %d: %s", this.getMessage(), this.lineNum, this.src));
+    @Override
+    public String getMessage() {
+        return String.format("Error: %s%nLine %d: %s", super.getMessage(), this.lineNum, this.src);
     }
 }
