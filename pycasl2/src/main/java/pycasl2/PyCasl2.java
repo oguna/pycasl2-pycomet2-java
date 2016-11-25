@@ -129,7 +129,7 @@ public class PyCasl2 {
         }
         System.out.println();
         System.out.println("Defined labels");
-        List<Label> labels = this.symbols.values().stream().sorted((o1, o2) -> o1.lines - o2.lines).collect(Collectors.toList());
+        List<Label> labels = this.symbols.values().stream().sorted(Comparator.comparingInt(o -> o.lines)).collect(Collectors.toList());
         labels.forEach(System.out::println);
     }
 
@@ -159,7 +159,7 @@ public class PyCasl2 {
 
         List<ByteCode> codeList = null;
         try {
-            codeList = this.tmpCode.stream().filter(e -> e != null).map(this::replaceLabel).collect(Collectors.toList());
+            codeList = this.tmpCode.stream().filter(Objects::nonNull).map(this::replaceLabel).collect(Collectors.toList());
         } catch (Error e) {
             e.report();
             System.exit(1);

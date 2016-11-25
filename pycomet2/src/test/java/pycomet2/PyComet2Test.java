@@ -59,4 +59,5 @@ public abstract class PyComet2Test {
             }
             return sb.toString();
         }
-    }}
+    }
+}
