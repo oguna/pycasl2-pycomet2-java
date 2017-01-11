@@ -268,10 +268,10 @@ public class PyCasl2 {
                     if (this.symbols.get(globalName).jumpto.isEmpty()) {
                         return this.symbols.get(globalName).addr;
                     } else {
-                        throw new Error(bcode.lineNumber, bcode.src, String.format("Undefined label \"%s\" was found.", ((String) x).split(".")[1]));
+                        throw new Error(bcode.lineNumber, bcode.src, String.format("Undefined label \"%s\" was found.", ((String) x).split("\\.")[1]));
                     }
                 } else {
-                    throw new Error(bcode.lineNumber, bcode.src, String.format("Undefined label \"%s\" was found.", ((String) x).split(".")[1]));
+                    throw new Error(bcode.lineNumber, bcode.src, String.format("Undefined label \"%s\" was found.", ((String) x).split("\\.")[1]));
                 }
             } else {
                 return (Integer) x;
