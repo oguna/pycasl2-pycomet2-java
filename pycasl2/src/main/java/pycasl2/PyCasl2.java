@@ -13,67 +13,6 @@ public class PyCasl2 {
     private final static Map<String, Integer> regStr =
             IntStream.rangeClosed(0, 9).mapToObj(e -> e).collect(Collectors.toMap(e -> String.format("GR%1d", e), e -> e));
 
-    private final static Map<String, Map.Entry<Integer, ArgType>> opTable = new HashMap<String, Map.Entry<Integer, ArgType>>() {
-        {
-            put("NOP", new SimpleEntry<>(0x00, ArgType.NoArg));
-            put("LD2", new SimpleEntry<>(0x10, ArgType.RAdrX));
-            put("ST", new SimpleEntry<>(0x11, ArgType.RAdrX));
-            put("LAD", new SimpleEntry<>(0x12, ArgType.RAdrX));
-            put("LD1", new SimpleEntry<>(0x14, ArgType.R1R2));
-            put("ADDA2", new SimpleEntry<>(0x20, ArgType.RAdrX));
-            put("SUBA2", new SimpleEntry<>(0x21, ArgType.RAdrX));
-            put("ADDL2", new SimpleEntry<>(0x22, ArgType.RAdrX));
-            put("SUBL2", new SimpleEntry<>(0x23, ArgType.RAdrX));
-            put("ADDA1", new SimpleEntry<>(0x24, ArgType.R1R2));
-            put("SUBA1", new SimpleEntry<>(0x25, ArgType.R1R2));
-            put("ADDL1", new SimpleEntry<>(0x26, ArgType.R1R2));
-            put("SUBL1", new SimpleEntry<>(0x27, ArgType.R1R2));
-            put("AND2", new SimpleEntry<>(0x30, ArgType.RAdrX));
-            put("OR2", new SimpleEntry<>(0x31, ArgType.RAdrX));
-            put("XOR2", new SimpleEntry<>(0x32, ArgType.RAdrX));
-            put("AND1", new SimpleEntry<>(0x34, ArgType.R1R2));
-            put("OR1", new SimpleEntry<>(0x35, ArgType.R1R2));
-            put("XOR1", new SimpleEntry<>(0x36, ArgType.R1R2));
-            put("CPA2", new SimpleEntry<>(0x40, ArgType.RAdrX));
-            put("CPL2", new SimpleEntry<>(0x41, ArgType.RAdrX));
-            put("CPA1", new SimpleEntry<>(0x44, ArgType.R1R2));
-            put("CPL1", new SimpleEntry<>(0x45, ArgType.R1R2));
-            put("SLA", new SimpleEntry<>(0x50, ArgType.RAdrX));
-            put("SRA", new SimpleEntry<>(0x51, ArgType.RAdrX));
-            put("SLL", new SimpleEntry<>(0x52, ArgType.RAdrX));
-            put("SRL", new SimpleEntry<>(0x53, ArgType.RAdrX));
-            put("JMI", new SimpleEntry<>(0x61, ArgType.AdrX));
-            put("JNZ", new SimpleEntry<>(0x62, ArgType.AdrX));
-            put("JZE", new SimpleEntry<>(0x63, ArgType.AdrX));
-            put("JUMP", new SimpleEntry<>(0x64, ArgType.AdrX));
-            put("JPL", new SimpleEntry<>(0x65, ArgType.AdrX));
-            put("JOV", new SimpleEntry<>(0x66, ArgType.AdrX));
-            put("PUSH", new SimpleEntry<>(0x70, ArgType.AdrX));
-            put("POP", new SimpleEntry<>(0x71, ArgType.R));
-            put("CALL", new SimpleEntry<>(0x80, ArgType.AdrX));
-            put("RET", new SimpleEntry<>(0x81, ArgType.NoArg));
-            put("SVC", new SimpleEntry<>(0xf0, ArgType.AdrX));
-            put("IN", new SimpleEntry<>(0x90, ArgType.StrLen));
-            put("OUT", new SimpleEntry<>(0x91, ArgType.StrLen));
-            put("RPUSH", new SimpleEntry<>(0xa0, ArgType.NoArg));
-            put("RPOP", new SimpleEntry<>(0xa1, ArgType.NoArg));
-            put("LD", new SimpleEntry<>(-1, null));
-            put("ADDA", new SimpleEntry<>(-2, null));
-            put("SUBA", new SimpleEntry<>(-3, null));
-            put("ADDL", new SimpleEntry<>(-4, null));
-            put("SUBL", new SimpleEntry<>(-5, null));
-            put("AND", new SimpleEntry<>(-6, null));
-            put("OR", new SimpleEntry<>(-7, null));
-            put("XOR", new SimpleEntry<>(-8, null));
-            put("CPA", new SimpleEntry<>(-9, null));
-            put("CPL", new SimpleEntry<>(-10, null));
-            put("START", new SimpleEntry<>(-100, ArgType.Start));
-            put("END", new SimpleEntry<>(-101, null));
-            put("DS", new SimpleEntry<>(0, ArgType.Ds));
-            put("DC", new SimpleEntry<>(0, ArgType.Dc));
-        }
-    };
-
     private static int a2l(int x) {
         x &= 0xffff;
         if (0 <= x) {
@@ -369,25 +308,25 @@ public class PyCasl2 {
     }
 
     private Object[] genCodeNoArg(String op, String[] args) {
-        return new Object[]{opTable.get(op).getKey() << 8};
+        return new Object[]{Operation.valueOf(op).code << 8};
     }
 
     private Object[] genCodeR(String op, String[] args) {
-        return new Object[]{(opTable.get(op).getKey() << 8) | ((int) this.convR(args)[0] << 4)};
+        return new Object[]{(Operation.valueOf(op).code << 8) | ((int) this.convR(args)[0] << 4)};
     }
 
     private Object[] genCodeR1R2(String op, String[] args) {
         Object[] r1r2 = this.convR1R2(args);
         int r1 = (int) r1r2[0];
         int r2 = (int) r1r2[1];
-        return new Object[]{((opTable.get(op).getKey() << 8) | (r1 << 4) | r2)};
+        return new Object[]{((Operation.valueOf(op).code << 8) | (r1 << 4) | r2)};
     }
 
     private Object[] genCodeAdrX(String op, String[] args) {
         Object[] adrx = this.convAdrX(args);
         Object adr = adrx[0];
         int x = (int) adrx[1];
-        return new Object[]{((opTable.get(op).getKey() << 8) | x), adr};
+        return new Object[]{((Operation.valueOf(op).code << 8) | x), adr};
     }
 
     private Object[] genCodeRAdrX(String op, String[] args) {
@@ -395,7 +334,7 @@ public class PyCasl2 {
         int r = (int) radrx[0];
         Object adr = radrx[1];
         int x = (int) radrx[2];
-        return new Object[]{((opTable.get(op).getKey() << 8) | (r << 4) | x), adr};
+        return new Object[]{((Operation.valueOf(op).code << 8) | (r << 4) | x), adr};
     }
 
     private Object[] genCodeDs(String op, String[] args) {
@@ -411,7 +350,7 @@ public class PyCasl2 {
     }
 
     private Object[] genCodeStrLen(String op, String[] args) {
-        return new Object[]{(opTable.get(op)).getKey() << 8, this.convAdr(args[0]), this.convAdr(args[1])};
+        return new Object[]{Operation.valueOf(op).code << 8, this.convAdr(args[0]), this.convAdr(args[1])};
     }
 
     private Object[] genCodeStart(String op, String[] args) {
@@ -462,17 +401,19 @@ public class PyCasl2 {
         if (inst.op == null) {
             return null;
         }
-        if (!opTable.containsKey(inst.op)) {
+        try {
+            Operation.valueOf(inst.op);
+        } catch (IllegalArgumentException | NullPointerException e) {
             throw new RuntimeException(String.format("Line %d: Invalid instruction \"%s\" was found.", inst.lineNumber, inst.op));
         }
-        if (-100 < opTable.get(inst.op).getKey() && opTable.get(inst.op).getKey() < 0) {
+        if (-100 < Operation.valueOf(inst.op).code && Operation.valueOf(inst.op).code < 0) {
             if (this.isArgRegister(inst.args[1])) {
                 inst.op += "1";
             } else {
                 inst.op += "2";
             }
         }
-        if (opTable.get(inst.op).getKey() == -100) {
+        if (Operation.valueOf(inst.op).code == -100) {
             if (inst.label == null) {
                 throw new RuntimeException(String.format("Line %d: Label should be defined for START.", inst.lineNumber));
             }
@@ -486,14 +427,14 @@ public class PyCasl2 {
                 this.startFound = true;
                 return new ByteCode(this.genCodeStart(inst.op, inst.args), this.addr, inst.lineNumber, inst.src);
             }
-        } else if (opTable.get(inst.op).getKey() == -101) {
+        } else if (Operation.valueOf(inst.op).code == -101) {
             this.currentScope = "";
             return null;
-        } else if (opTable.get(inst.op).getKey() < 0) {
+        } else if (Operation.valueOf(inst.op).code < 0) {
             return null;
         }
 
-        Object[] code = this.genCodeFunc.get(opTable.get(inst.op).getValue()).apply(inst.op, inst.args);
+        Object[] code = this.genCodeFunc.get(Operation.valueOf(inst.op).argType).apply(inst.op, inst.args);
         ByteCode byteCode = new ByteCode(code, this.addr, inst.lineNumber, inst.src);
         this.addr += byteCode.code.length;
         return byteCode;
