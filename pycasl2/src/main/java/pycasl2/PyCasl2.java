@@ -87,7 +87,7 @@ public class PyCasl2 {
         } catch (Error e) {
             throw new RuntimeException(e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException("Error: Unexpected error.\nError: Unexpected error.\nException type:" + e.getClass() + "\n" + e.toString());
+            throw new RuntimeException("Error: Unexpected error.\nException type:" + e.getClass() + "\n" + e.toString());
         } finally {
             fp.close();
         }
@@ -98,7 +98,7 @@ public class PyCasl2 {
         } catch (Error e) {
             throw new RuntimeException(e.getMessage());
         } catch (Exception e) {
-            throw new RuntimeException("Error: Unexpected error.\nError: Unexpected error.\nException type:" + e.getClass() + "\n" + e.toString());
+            throw new RuntimeException("Error: Unexpected error.\nException type:" + e.getClass() + "\n" + e.toString());
         }
 
         codeList.addAll(this.additionalDC);
