@@ -90,6 +90,14 @@ public class PyCasl2Test {
         test("013");
     }
 
+    @Test
+    public void bug3() throws Exception {
+        Path casPath = Paths.get(PyCasl2Test.class.getResource("/bug3.cas").toURI());
+        Path inputPath = Paths.get(tmpDir.toString(), casPath.getFileName().toString());
+        Files.copy(casPath, inputPath, StandardCopyOption.REPLACE_EXISTING);
+        PyCasl2.main(new String[]{inputPath.toString()});
+    }
+
     private void test(String target) throws Exception {
         Path casPath = Paths.get(PyCasl2Test.class.getResource("/enshu-d/" + target + ".cas").toURI());
         Path comPath = Paths.get(PyCasl2Test.class.getResource("/enshu-d/" + target + ".com").toURI());
