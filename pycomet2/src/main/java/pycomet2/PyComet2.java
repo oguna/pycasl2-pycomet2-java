@@ -254,7 +254,7 @@ public class PyComet2 implements Util {
         tmp = Arrays.copyOfRange(tmp, 8, tmp.length);
         System.arraycopy(tmp, 0, this.memory, 0, tmp.length);
         if (!quiet) {
-            System.err.println(" done.");
+            System.err.println("done.");
         }
     }
 
