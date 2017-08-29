@@ -236,7 +236,7 @@ public class PyCasl2 {
         String pattern = "(^" + re_label + re_op + re_args + ")?" + re_comment;
 
         result = Pattern.compile(pattern).matcher(line);
-        if (!result.matches()) {
+        if (!result.find() || result.start() != 0) {
             throw new RuntimeException(String.format("Line %d: Invalid line was found.", lineNumber));
         }
 
