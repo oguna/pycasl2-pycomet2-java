@@ -156,7 +156,13 @@ public class PyCasl2 {
                 this.nextLine = new Instruction(null, "EOF", null, this.currentLineNumber + 1, "");
                 return current;
             }
-            line = line.split(";")[0].replaceAll("\\s+$", "");
+            int semicolonIndex = line.indexOf(';');
+            if (semicolonIndex == -1) {
+                line = line.replaceAll("\\s+$", "");
+            } else {
+                line = line.substring(0, semicolonIndex).replaceAll("\\s+$", "");
+            }
+            //line = line.split(";")[0].replaceAll("\\s+$", "");
             if (!line.isEmpty()) {
                 break;
             }

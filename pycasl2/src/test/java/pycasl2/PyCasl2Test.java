@@ -98,6 +98,11 @@ public class PyCasl2Test {
         PyCasl2.main(new String[]{inputPath.toString()});
     }
 
+    @Test
+    public void bug4() throws Exception {
+        test("bug4");
+    }
+
     private void test(String target) throws Exception {
         Path casPath = Paths.get(PyCasl2Test.class.getResource("/enshu-d/" + target + ".cas").toURI());
         Path comPath = Paths.get(PyCasl2Test.class.getResource("/enshu-d/" + target + ".com").toURI());

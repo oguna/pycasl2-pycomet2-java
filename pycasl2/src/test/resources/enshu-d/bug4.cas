@@ -1,0 +1,1000 @@
+PROGRAM	START
+	LAD	GR6,0
+	LAD	GR7,LIBBUF
+	LAD	GR0,0
+	LAD	GR4,1
+	LAD	GR1,8
+	ST	GR1,VAR_1
+	ST	GR1,6
+	LAD	GR1,1
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,96
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,1
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,86
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,2
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,89
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,2
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,56
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,3
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,78
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,3
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,81
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,4
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,68
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,4
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,86
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,5
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,58
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,5
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,78
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,6
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,49
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,6
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,56
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,7
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,39
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,7
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,23
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	ST	GR1,6
+	LAD	GR1,8
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,32
+	LD	GR5,0
+	ST	GR1,VAR_9,GR5
+	ST	GR1,6
+	LAD	GR1,8
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	ST	GR5,0
+	LAD	GR1,24
+	LD	GR5,0
+	ST	GR1,VAR_10,GR5
+	LAD	GR1,1
+	ST	GR1,VAR_0
+	LAD	GR1,0
+	ST	GR1,VAR_2
+	LAD	GR1,0
+	ST	GR1,VAR_3
+	LAD	GR1,0
+	ST	GR1,VAR_4
+	LAD	GR1,0
+	ST	GR1,VAR_5
+	LAD	GR2,0
+	LAD	GR1,24
+	LAD	GR3,78
+	ST	GR3,0
+	LAD	GR3,111
+	ST	GR3,1
+	LAD	GR3,46
+	ST	GR3,2
+	LAD	GR3,32
+	ST	GR3,3
+	LAD	GR3,120
+	ST	GR3,4
+	LAD	GR3,32
+	ST	GR3,5
+	LAD	GR3,32
+	ST	GR3,6
+	LAD	GR3,32
+	ST	GR3,7
+	LAD	GR3,32
+	ST	GR3,8
+	LAD	GR3,121
+	ST	GR3,9
+	LAD	GR3,32
+	ST	GR3,10
+	LAD	GR3,32
+	ST	GR3,11
+	LAD	GR3,32
+	ST	GR3,12
+	LAD	GR3,32
+	ST	GR3,13
+	LAD	GR3,120
+	ST	GR3,14
+	LAD	GR3,121
+	ST	GR3,15
+	LAD	GR3,32
+	ST	GR3,16
+	LAD	GR3,32
+	ST	GR3,17
+	LAD	GR3,32
+	ST	GR3,18
+	LAD	GR3,32
+	ST	GR3,19
+	LAD	GR3,32
+	ST	GR3,20
+	LAD	GR3,120
+	ST	GR3,21
+	LAD	GR3,94
+	ST	GR3,22
+	LAD	GR3,50
+	ST	GR3,23
+	CALL	WRTSTR
+	CALL	WRTLN
+LAB_0	NOP
+	LD	GR1,VAR_0
+	ST	GR1,4
+	LD	GR1,VAR_1
+	ST	GR1,5
+	LD	GR1,4
+	CPA	GR1,5
+	JMI	LAB_1
+	JZE	LAB_1
+	LAD	GR1,0
+	JUMP	LAB_2
+LAB_1	LAD	GR1,1
+LAB_2	NOP
+	CPA	GR1,GR0
+	JZE	LAB_3
+	LD	GR1,VAR_0
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	LAD	GR2,0
+	LAD	GR1,3
+	LAD	GR3,32
+	ST	GR3,0
+	LAD	GR3,32
+	ST	GR3,1
+	LAD	GR3,32
+	ST	GR3,2
+	CALL	WRTSTR
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_9,GR5
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	LAD	GR2,0
+	LAD	GR1,3
+	LAD	GR3,32
+	ST	GR3,0
+	LAD	GR3,32
+	ST	GR3,1
+	LAD	GR3,32
+	ST	GR3,2
+	CALL	WRTSTR
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_10,GR5
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	LAD	GR2,0
+	LAD	GR1,3
+	LAD	GR3,32
+	ST	GR3,0
+	LAD	GR3,32
+	ST	GR3,1
+	LAD	GR3,32
+	ST	GR3,2
+	CALL	WRTSTR
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_9,GR5
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR2,VAR_10,GR5
+	CALL	MULT
+	LAD	GR1,0,GR2
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	LAD	GR2,0
+	LAD	GR1,3
+	LAD	GR3,32
+	ST	GR3,0
+	LAD	GR3,32
+	ST	GR3,1
+	LAD	GR3,32
+	ST	GR3,2
+	CALL	WRTSTR
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_9,GR5
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR2,VAR_9,GR5
+	CALL	MULT
+	LAD	GR1,0,GR2
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	CALL	WRTLN
+	LD	GR1,VAR_2
+	ST	GR1,2
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_9,GR5
+	ST	GR1,3
+	LD	GR1,2
+	ADDA	GR1,3
+	ST	GR1,2
+	ST	GR1,VAR_2
+	LD	GR1,VAR_3
+	ST	GR1,2
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_10,GR5
+	ST	GR1,3
+	LD	GR1,2
+	ADDA	GR1,3
+	ST	GR1,2
+	ST	GR1,VAR_3
+	LD	GR1,VAR_4
+	ST	GR1,2
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_9,GR5
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR2,VAR_10,GR5
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,3
+	LD	GR1,2
+	ADDA	GR1,3
+	ST	GR1,2
+	ST	GR1,VAR_4
+	LD	GR1,VAR_5
+	ST	GR1,2
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR1,VAR_9,GR5
+	ST	GR1,6
+	LD	GR1,VAR_0
+	LD	GR5,GR1
+	LAD	GR3,-1
+	ADDA	GR5,GR3
+	LD	GR1,6
+	LD	GR2,VAR_9,GR5
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,3
+	LD	GR1,2
+	ADDA	GR1,3
+	ST	GR1,2
+	ST	GR1,VAR_5
+	LD	GR1,VAR_0
+	ST	GR1,2
+	LAD	GR1,1
+	ST	GR1,3
+	LD	GR1,2
+	ADDA	GR1,3
+	ST	GR1,2
+	LD	GR1,2
+	ST	GR1,VAR_0
+	JUMP	LAB_0
+LAB_3	NOP
+	CALL	WRTLN
+	LAD	GR2,0
+	LAD	GR1,12
+	LAD	GR3,83
+	ST	GR3,0
+	LAD	GR3,105
+	ST	GR3,1
+	LAD	GR3,103
+	ST	GR3,2
+	LAD	GR3,109
+	ST	GR3,3
+	LAD	GR3,97
+	ST	GR3,4
+	LAD	GR3,40
+	ST	GR3,5
+	LAD	GR3,120
+	ST	GR3,6
+	LAD	GR3,41
+	ST	GR3,7
+	LAD	GR3,61
+	ST	GR3,8
+	LAD	GR3,32
+	ST	GR3,9
+	LAD	GR3,32
+	ST	GR3,10
+	LAD	GR3,32
+	ST	GR3,11
+	CALL	WRTSTR
+	LD	GR1,VAR_2
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	CALL	WRTLN
+	LAD	GR2,0
+	LAD	GR1,12
+	LAD	GR3,83
+	ST	GR3,0
+	LAD	GR3,105
+	ST	GR3,1
+	LAD	GR3,103
+	ST	GR3,2
+	LAD	GR3,109
+	ST	GR3,3
+	LAD	GR3,97
+	ST	GR3,4
+	LAD	GR3,40
+	ST	GR3,5
+	LAD	GR3,121
+	ST	GR3,6
+	LAD	GR3,41
+	ST	GR3,7
+	LAD	GR3,61
+	ST	GR3,8
+	LAD	GR3,32
+	ST	GR3,9
+	LAD	GR3,32
+	ST	GR3,10
+	LAD	GR3,32
+	ST	GR3,11
+	CALL	WRTSTR
+	LD	GR1,VAR_3
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	CALL	WRTLN
+	LAD	GR2,0
+	LAD	GR1,12
+	LAD	GR3,83
+	ST	GR3,0
+	LAD	GR3,105
+	ST	GR3,1
+	LAD	GR3,103
+	ST	GR3,2
+	LAD	GR3,109
+	ST	GR3,3
+	LAD	GR3,97
+	ST	GR3,4
+	LAD	GR3,40
+	ST	GR3,5
+	LAD	GR3,120
+	ST	GR3,6
+	LAD	GR3,121
+	ST	GR3,7
+	LAD	GR3,41
+	ST	GR3,8
+	LAD	GR3,61
+	ST	GR3,9
+	LAD	GR3,32
+	ST	GR3,10
+	LAD	GR3,32
+	ST	GR3,11
+	CALL	WRTSTR
+	LD	GR1,VAR_4
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	CALL	WRTLN
+	LAD	GR2,0
+	LAD	GR1,12
+	LAD	GR3,83
+	ST	GR3,0
+	LAD	GR3,105
+	ST	GR3,1
+	LAD	GR3,103
+	ST	GR3,2
+	LAD	GR3,109
+	ST	GR3,3
+	LAD	GR3,97
+	ST	GR3,4
+	LAD	GR3,40
+	ST	GR3,5
+	LAD	GR3,120
+	ST	GR3,6
+	LAD	GR3,94
+	ST	GR3,7
+	LAD	GR3,50
+	ST	GR3,8
+	LAD	GR3,41
+	ST	GR3,9
+	LAD	GR3,61
+	ST	GR3,10
+	LAD	GR3,32
+	ST	GR3,11
+	CALL	WRTSTR
+	LD	GR1,VAR_5
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	CALL	WRTLN
+	LD	GR1,VAR_1
+	LD	GR2,VAR_5
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,2
+	LD	GR1,VAR_2
+	LD	GR2,VAR_2
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,3
+	LD	GR1,2
+	SUBA	GR1,3
+	ST	GR1,2
+	LD	GR1,2
+	ST	GR1,VAR_6
+	LD	GR1,VAR_6
+	LD	GR2,VAR_5
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,4
+	LAD	GR1,0
+	ST	GR1,5
+	LD	GR1,4
+	CPA	GR1,5
+	JZE	LAB_4
+	LAD	GR1,0
+	JUMP	LAB_5
+LAB_4	LAD	GR1,1
+LAB_5	NOP
+	CPA	GR1,GR0
+	JZE	LAB_6
+	LAD	GR2,0
+	LAD	GR1,21
+	LAD	GR3,70
+	ST	GR3,0
+	LAD	GR3,105
+	ST	GR3,1
+	LAD	GR3,116
+	ST	GR3,2
+	LAD	GR3,116
+	ST	GR3,3
+	LAD	GR3,105
+	ST	GR3,4
+	LAD	GR3,110
+	ST	GR3,5
+	LAD	GR3,103
+	ST	GR3,6
+	LAD	GR3,32
+	ST	GR3,7
+	LAD	GR3,85
+	ST	GR3,8
+	LAD	GR3,110
+	ST	GR3,9
+	LAD	GR3,115
+	ST	GR3,10
+	LAD	GR3,117
+	ST	GR3,11
+	LAD	GR3,99
+	ST	GR3,12
+	LAD	GR3,99
+	ST	GR3,13
+	LAD	GR3,101
+	ST	GR3,14
+	LAD	GR3,115
+	ST	GR3,15
+	LAD	GR3,115
+	ST	GR3,16
+	LAD	GR3,102
+	ST	GR3,17
+	LAD	GR3,117
+	ST	GR3,18
+	LAD	GR3,108
+	ST	GR3,19
+	LAD	GR3,46
+	ST	GR3,20
+	CALL	WRTSTR
+	CALL	WRTLN
+	JUMP	LAB_7
+LAB_6	NOP
+	ST	GR1,6
+	LD	GR1,VAR_5
+	LD	GR2,VAR_3
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,7
+	LD	GR1,VAR_4
+	LD	GR2,VAR_2
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,8
+	LD	GR1,7
+	SUBA	GR1,8
+	ST	GR1,7
+	LD	GR1,7
+	LD	GR2,VAR_6
+	CALL	DIV
+	LAD	GR1,0,GR2
+	ST	GR1,VAR_8
+	ST	GR1,6
+	LD	GR1,VAR_4
+	ST	GR1,7
+	LD	GR1,VAR_8
+	LD	GR2,VAR_2
+	CALL	MULT
+	LAD	GR1,0,GR2
+	ST	GR1,8
+	LD	GR1,7
+	SUBA	GR1,8
+	ST	GR1,7
+	LD	GR1,7
+	LD	GR2,VAR_5
+	CALL	DIV
+	LAD	GR1,0,GR2
+	ST	GR1,VAR_7
+	CALL	WRTLN
+	LAD	GR2,0
+	LAD	GR1,2
+	LAD	GR3,97
+	ST	GR3,0
+	LAD	GR3,61
+	ST	GR3,1
+	CALL	WRTSTR
+	LD	GR1,VAR_7
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	LAD	GR2,0
+	LAD	GR1,5
+	LAD	GR3,32
+	ST	GR3,0
+	LAD	GR3,32
+	ST	GR3,1
+	LAD	GR3,32
+	ST	GR3,2
+	LAD	GR3,98
+	ST	GR3,3
+	LAD	GR3,61
+	ST	GR3,4
+	CALL	WRTSTR
+	LD	GR1,VAR_8
+	LAD	GR2,0,GR1
+	CALL	WRTINT
+	CALL	WRTLN
+LAB_7	NOP
+	RET
+LIBBUF	DS	256	;;ГTГuГЛБ[Г`ГУГЙГCГuГЙГКЧpВ╠ГoГbГtГ@
+VAR_0	DS	1	;;n
+VAR_1	DS	1	;;max
+VAR_2	DS	1	;;sx
+VAR_3	DS	1	;;sy
+VAR_4	DS	1	;;sxy
+VAR_5	DS	1	;;sx2
+VAR_6	DS	1	;;w
+VAR_7	DS	1	;;a
+VAR_8	DS	1	;;b
+VAR_9	DS	8	;;dx
+VAR_10	DS	8	;;dy
+	END
+;
+;====================
+; MULT: │▌д▒╗╗дЄ╣╘дже╡е╓еыб╝е┴еє
+; GR1 * GR2 -> GR2
+MULT	START
+	PUSH	0,GR1 ; GR1 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR3 ; GR3 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR4 ; GR4 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	LAD	GR3,0 ; GR3 дЄ╜щ┤№▓╜
+	LD	GR4,GR2
+	JPL	LOOP
+	XOR	GR4,=#FFFF
+	ADDA	GR4,=1
+LOOP	SRL	GR4,1
+	JOV	ONE
+	JUMP	ZERO
+ONE	ADDL	GR3,GR1
+ZERO	SLL	GR1,1
+	AND	GR4,GR4
+	JNZ	LOOP
+	CPA	GR2,=0
+	JPL	END
+	XOR	GR3,=#FFFF
+	ADDA	GR3,=1
+END	LD	GR2,GR3
+	POP	GR4
+	POP	GR3
+	POP	GR1
+	RET
+	END
+;====================
+; DIV │фдъ╗╗дЄ╣╘дже╡е╓еыб╝е┴еє
+; GR1 / GR2 -> ╛жд╧ GR2, ═╛дъд╧ GR1
+DIV	START
+	PUSH	0, GR3
+	ST	GR1, A
+	ST	GR2, B
+	CPA	GR1, =0
+	JPL	SKIPA
+	XOR	GR1, =#FFFF
+	ADDA	GR1, =1
+SKIPA	CPA	GR2, =0
+	JZE	SKIPD
+	JPL	SKIPB
+	XOR	GR2, =#FFFF
+	ADDA	GR2, =1
+SKIPB	LD	GR3, =0
+LOOP	CPA	GR1, GR2
+	JMI	STEP
+	SUBA	GR1, GR2
+	LAD	GR3, 1, GR3
+	JUMP	LOOP
+STEP	LD	GR2, GR3
+	LD	GR3, A
+	CPA	GR3, =0
+	JPL	SKIPC
+	XOR	GR1, =#FFFF
+	ADDA	GR1, =1
+SKIPC	XOR	GR3, B
+	CPA	GR3, =0
+        JZE     SKIPD
+	JPL	SKIPD
+	XOR	GR2, =#FFFF
+	ADDA	GR2, =1
+SKIPD	POP	GR3
+	RET
+A	DS	1
+B	DS	1
+	END
+;====================
+; ╞■╬╧┴ї├╓длдщ┐Ї├═е╟б╝е┐дЄ╞╔д▀╣■д▀бд
+; д╜д╬╞т═╞дЄ GR2 дм╗╪д╣еве╔еье╣д╦│╩╟╝д╣дые╡е╓еыб╝е┴еє
+RDINT	START
+	PUSH	0,GR1 ; GR1 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR3 ; GR3 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR4 ; GR4 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR5 ; GR5 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR6 ; GR6 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	LD	GR5,GR2 ; GR2 дм╗╪д╣╚╓├╧дЄ GR5 д╦е│е╘б╝
+	LD	GR2,=0 ; GR2 дЄ╜щ┤№▓╜
+	LD	GR3,=0 ; GR3 дЄ╜щ┤№▓╜
+	IN	INAREA,INLEN ; ╞■╬╧дЄ╝їд▒╝шды
+	; ╞■╬╧дмnullдлд╔дждлд╬е┴езе├еп
+	CPA	GR3,INLEN
+	JZE	ERROR
+	; ║╟╜щд╬╩╕╗·дм'-'длд╔дждлд╬е┴езе├еп
+	LD	GR4,INAREA,GR3
+	LAD	GR3,1,GR3
+	LD	GR6,GR4 ; GR6 д╦╞■╬╧д╡дьд┐└ш╞мд╬╩╕╗·дЄ╩▌┬╕
+	CPL	GR4,=#002D ; '-'длд╔дждл
+	JZE	LOOP
+	CPL	GR4,='0' ; ┐Ї├═длд╔дждлд╬е┴езе├еп
+	JMI	ERROR
+	CPL	GR4,='9' 
+	JPL	ERROR
+	XOR	GR4,=#0030 ; ┐Ї├═д└д├д┐дщ╩╤┤╣
+	ADDA	GR2,GR4
+	; б╓д╣д╟д╦╞╔д▀╣■дєд└┐Ї├═дЄ10╟▄д╖д╞бд
+	; ┐╖д╖дп╞╔д▀╣■дєд└┐Ї├═д╚┬нд╣беб╫дЄ╖лдъ╩╓д╣
+LOOP	CPA	GR3,INLEN
+	JZE	CODE ; ╞■╬╧д╡дьд┐╩╕╗·┐Їд╚GR3дм╞▒д╕д╟двдьд╨еыб╝е╫дЄ╚┤д▒ды
+	LD	GR1,=10
+	CALL	MULT ; GR2 д╬├═дЄ10╟▄д╣ды
+	LD	GR4,INAREA,GR3
+	CPL	GR4,='0' ; ┐Ї├═длд╔дждлд╬е┴езе├еп
+	JMI	ERROR
+	CPL	GR4,='9' 
+	JPL	ERROR
+	XOR	GR4,=#0030 ; GR4 д╬╞т═╞дЄ┐Ї├═д╦╩╤┤╣
+	ADDA	GR2,GR4 ; GR2 д╦ GR1 д╬╞т═╞дЄ┬нд╣
+	LAD	GR3,1,GR3; GR3 (е▌едеєе┐)дЄедеєепеъесеєе╚
+	JUMP	LOOP
+	; ║╟╜щд╬╩╕╗·дм '-'д╟двд├д┐╛ь╣чд╧бд-1╟▄д╣ды
+CODE	CPL	GR6,=#002D
+	JNZ	END
+	XOR	GR2,=#FFFF
+	LAD	GR2,1,GR2
+	JUMP	END
+	; еиещб╝дЄ╜╨╬╧д╣ды
+ERROR	OUT	ERRSTR,ERRLEN
+END	ST	GR2,0,GR5 ; GR2 д╬╞т═╞дЄ GR5 дм╗╪д╣╚╓├╧д╦│╩╟╝д╣ды
+	LD	GR2,GR5 ; GR5 дм╗╪д╣╚╓├╧дЄ GR2 д╦╠сд╣
+	POP	GR6
+	POP	GR5
+	POP	GR4
+	POP	GR3
+	POP	GR1
+	RET
+ERRSTR	DC	'illegal input'
+ERRLEN	DC	13
+INAREA	DS	6
+INLEN	DS	1
+	END
+;====================
+; ╞■╬╧┴ї├╓длдщ╩╕╗·дЄ╞╔д▀╣■д▀бд
+; д╜д╬╞т═╞дЄ GR2 дм╗╪д╣еве╔еье╣д╦│╩╟╝д╣дые╡е╓еыб╝е┴еє
+RDCH	START
+	IN	INCHAR,INLEN
+	LD	GR1,INCHAR
+	ST	GR1,0,GR2
+	RET
+INCHAR	DS	1
+INLEN	DS	1
+	END
+;====================
+; ╞■╬╧┴ї├╓длдщбдGR1д╬╩╕╗·┐ЇдЄ╞╔д▀╣■дрбе
+; ╞╔д▀╣■дєд└╩╕╗·╬єд╧бдGR2 дм╗╪д╣еве╔еье╣длдщ╜чд╦│╩╟╝д╡дьды
+RDSTR	START
+	PUSH	0,GR3 ; GR3 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR4 ; GR4 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR5 ; GR5 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	LAD	GR4,0 ; GR4 дЄ╜щ┤№▓╜
+	IN	INSTR,INLEN
+LOOP	CPA	GR4,GR1
+	JZE	END ; GR1д╟╗╪─ъд╡дьд┐╩╕╗·┐ЇдЄ─╢дид┐дщ╜кдядъ
+	CPA	GR4,INLEN
+	JZE	END ; ╞■╬╧д╡дьд┐╩╕╗·┐ЇдЄ─╢дид┐дщ╜кдядъ
+	LD	GR5,GR2
+	ADDA	GR5,GR4 ; ╩╕╗·д╬│╩╟╝└ш╚╓├╧дЄ╖╫╗╗
+	LD	GR3,INSTR,GR4
+	ST	GR3,0,GR5
+	LAD	GR4,1,GR4
+	JUMP	LOOP
+END	POP	GR5
+	POP	GR4
+	POP	GR3
+	RET
+INSTR	DS	256
+INLEN	DS	1
+	END
+;====================
+; ╞■╬╧┴ї├╓длдщд╬╩╕╗·╬єдЄ▓■╣╘д▐д╟╞╔д▀╚Їд╨д╣е╡е╓еыб╝е┴еє
+RDLN	START
+	IN	INAREA,INLEN
+	RET
+INAREA	DS	256
+INLEN	DS	1
+	END
+;====================
+; GR2 д╬╞т═╞б╩┐Ї├═е╟б╝е┐б╦дЄ╜╨╬╧┴ї├╓д╦╜ёдн╜╨д╣е╡е╓еыб╝е┴еє
+; д│д╬е╡е╓еыб╝е┴еєдм╕╞д╨дьд┐д╚днбд
+; GR7 д╦д╧бд╜╨╬╧═╤╚╓├╧д╬└ш╞меве╔еье╣дмбд
+; GR6 д╦д╧бд╕╜║▀╜╨╬╧═╤╚╓├╧д╦╞■д├д╞ддды╩╕╗·┐Їдмбд
+; д╜дьд╛дь│╩╟╝д╡дьд╞дддыбе
+WRTINT  START
+	PUSH    0,GR1 ; GR1д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+        PUSH    0,GR2 ; GR2д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR3 ; GR3д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR2 ; ┐Ї├═е╟б╝е┐дЄдтдж░ь┼┘е╣е┐е├епд╦┬р╚Є
+	LD	GR3,=0 ; GR3 д╧едеєе╟е├епе╣д╚д╖д╞═╤ддды
+	; ┐Ї├═е╟б╝е┐дм╔щ┐Їд╟двды╛ь╣чд╧бд└╡д╬┐Їд╦╩╤┤╣
+	CPA	GR2,=0
+	JPL	LOOP1
+	XOR	GR2,=#FFFF
+	ADDA	GR2,=1
+	; ┐Ї├═е╟б╝е┐дЄ╩╤┤╣д╖д╩дмдщбде╨е├е╒ебд╦│╩╟╝
+LOOP1	LD	GR1,GR2
+	LD	GR2,=10
+	CALL	DIV
+	XOR	GR1,=#0030
+	ST	GR1,BUFFER,GR3
+	LAD	GR3,1,GR3
+	CPA	GR2,=0
+	JNZ	LOOP1
+	; ┐Ї├═е╟б╝е┐дм╔щ┐Їд╟двдьд╨бд'-'дЄ─╔▓├
+	POP	GR2
+	CPA	GR2,=0
+	JZE	LOOP2
+	JPL	LOOP2
+	LD	GR1,='-'
+	ST	GR1,BUFFER,GR3
+	LAD	GR3,1,GR3
+	; BUFFER дЄ╡╒╜чд╦д┐д╔дъд╩дмдщбд╜╨╬╧═╤е╨е├е╒ебд╦│╩╟╝
+LOOP2	LAD	GR3,-1,GR3
+	LD	GR1,BUFFER,GR3
+	LD	GR2,GR7
+	ADDA	GR2,GR6
+	ST	GR1,0,GR2
+	LAD	GR6,1,GR6
+	CPA	GR3,=0
+	JNZ	LOOP2
+END	POP	GR3
+	POP	GR2
+	POP	GR1
+	RET
+BUFFER	DS	6	
+	END
+;====================
+; GR2 д╬╞т═╞б╩╩╕╗·б╦дЄ╜╨╬╧┴ї├╓д╦╜ёдн╜╨д╣е╡е╓еыб╝е┴еє
+; д│д╬е╡е╓еыб╝е┴еєдм╕╞д╨дьд┐д╚днбд
+; GR7 д╦д╧бд╜╨╬╧═╤╚╓├╧д╬└ш╞меве╔еье╣дмбд
+; GR6 д╦д╧бд╕╜║▀╜╨╬╧═╤╚╓├╧д╦╞■д├д╞ддды╩╕╗·┐Їдмбд
+; д╜дьд╛дь│╩╟╝д╡дьд╞дддыбе
+WRTCH	START
+	PUSH	0,GR1 ; GR1 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	LD	GR1,GR7
+	ADDA	GR1,GR6 ; GR1 д╦╝бд╬╩╕╗·дЄ│╩╟╝д╣ды╚╓├╧дЄ┬х╞■
+	ST	GR2,0,GR1
+	LAD	GR6,1,GR6
+	POP	GR1
+	RET
+	END
+;====================
+; GR2 д╬╗╪д╣есетеъ╚╓├╧длдщбд─╣д╡ GR1 д╬╩╕╗·╬єдЄ╜╨╬╧┴ї├╓д╦╜ёдн╜╨д╣е╡е╓еыб╝е┴еє
+; д│д╬е╡е╓еыб╝е┴еєдм╕╞д╨дьд┐д╚днбд
+; GR7 д╦д╧бд╜╨╬╧═╤╚╓├╧д╬└ш╞меве╔еье╣дмбд
+; GR6 д╦д╧бд╕╜║▀╜╨╬╧═╤╚╓├╧д╦╞■д├д╞ддды╩╕╗·┐Їдмбд
+; д╜дьд╛дь│╩╟╝д╡дьд╞дддыбе
+WRTSTR	START
+	PUSH	0,GR3 ; GR3 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR4 ; GR4 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	PUSH	0,GR5 ; GR5 д╬╞т═╞дЄе╣е┐е├епд╦┬р╚Є
+	LAD	GR3, 0 ; GR3 д╧└й╕ц╩╤┐Їд╚д╖д╞═╤ддды
+LOOP	CPA	GR3,GR1
+	JZE	END
+	LD	GR4,GR2
+	ADDA	GR4,GR3 ; ╜╨╬╧д╣ды╩╕╗·д╬│╩╟╝╚╓├╧дЄ╖╫╗╗
+	LD	GR5,0,GR4 ; ╜╨╬╧д╣ды╩╕╗·дЄеье╕е╣е┐д╦е│е╘б╝
+	LD	GR4,GR7
+	ADDA	GR4,GR6 ; ╜╨╬╧└шд╬╚╓├╧дЄ╖╫╗╗
+	ST	GR5,0,GR4 ; ╜╨╬╧┴ї├╓д╦╜ёдн╜╨д╖
+	LAD	GR3,1,GR3
+	LAD	GR6,1,GR6
+	JUMP	LOOP
+END	POP	GR5
+	POP	GR4
+	POP	GR3
+	RET
+	END
+;====================
+; ▓■╣╘дЄ╜╨╬╧┴ї├╓д╦╜ёдн╜╨д╣е╡е╓еыб╝е┴еє
+; ╝┬╝┴┼кд╦д╧бдGR7д╟╗╧д▐дыеве╔еье╣╚╓├╧длдщ─╣д╡GR6д╬╩╕╗·╬єдЄ╜╨╬╧д╣ды
+WRTLN	START
+	PUSH	0,GR1
+	PUSH	0,GR2
+	PUSH	0,GR3
+	ST	GR6,OUTLEN
+	LAD	GR1,0
+LOOP	CPA	GR1,OUTLEN
+	JZE	END
+	LD	GR2,GR7
+	ADDA	GR2,GR1
+	LD	GR3,0,GR2
+	ST	GR3,OUTSTR,GR1
+	LAD	GR1,1,GR1
+	JUMP	LOOP	
+END	OUT	OUTSTR,OUTLEN
+	LAD	GR6,0 ; ╩╕╗·╬єдЄ╜╨╬╧д╖д╞бдGR6 дЄ╜щ┤№▓╜
+	POP	GR3
+	POP	GR2
+	POP	GR1
+	RET
+OUTSTR	DS	256
+OUTLEN	DS	1
+	END
