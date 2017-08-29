@@ -481,7 +481,7 @@ public class PyComet2 implements Util {
         System.err.println("st            Dump 128 words of stack image.");
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         boolean countStep = false;
         boolean dump = false;
         boolean run = false;
@@ -565,16 +565,21 @@ public class PyComet2 implements Util {
             PyComet2 comet2 = new PyComet2();
             comet2.setAutoDump(dump);
             comet2.setCountStep(countStep);
-            if (watchVariables != null) {
-                comet2.load(argList.get(0), true);
-                comet2.watch(watchVariables, decimalFlag);
-            } else if (run) {
-                comet2.load(argList.get(0), true);
-                comet2.run();
-            } else {
-                comet2.load(argList.get(0));
-                comet2.printStatus();
-                comet2.waitForCommand();
+            try {
+                if (watchVariables != null) {
+                    comet2.load(argList.get(0), true);
+                    comet2.watch(watchVariables, decimalFlag);
+                } else if (run) {
+                    comet2.load(argList.get(0), true);
+                    comet2.run();
+                } else {
+                    comet2.load(argList.get(0));
+                    comet2.printStatus();
+                    comet2.waitForCommand();
+                }
+            } catch (IOException e) {
+                System.err.println("An I/O error occurred while reading comet file.");
+                System.exit(1);
             }
         }
     }
