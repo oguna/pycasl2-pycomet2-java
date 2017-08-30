@@ -463,7 +463,7 @@ public class PyCasl2 {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String usage = "Usage: " + PyCasl2.class.getSimpleName() + " [options] input.cas [output.com]";
         List<String> argList = new ArrayList<>();
         boolean dump = false;
