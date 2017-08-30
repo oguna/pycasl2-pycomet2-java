@@ -897,13 +897,13 @@ INBMES	DC	'error: input not boolean (true(1) or false(0))'	;
 INBLEN	DC	46	; 
 	END	; end my program
 ;====================
-; MULT: �ݤ�����Ԥ����֥롼����
+; MULT: 掛け算を行うサブルーチン
 ; GR1 * GR2 -> GR2
 MULT	START
-	PUSH	0,GR1 ; GR1 �����Ƥ򥹥��å�������
-	PUSH	0,GR3 ; GR3 �����Ƥ򥹥��å�������
-	PUSH	0,GR4 ; GR4 �����Ƥ򥹥��å�������
-	LAD	GR3,0 ; GR3 ������
+	PUSH	0,GR1 ; GR1 の内容をスタックに退避
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	LAD	GR3,0 ; GR3 を初期化
 	LD	GR4,GR2
 	JPL	LOOP
 	XOR	GR4,=#FFFF
@@ -926,8 +926,8 @@ END	LD	GR2,GR3
 	RET
 	END
 ;====================
-; DIV ��껻��Ԥ����֥롼����
-; GR1 / GR2 -> ���� GR2, ;��� GR1
+; DIV 割り算を行うサブルーチン
+; GR1 / GR2 -> 商は GR2, 余りは GR1
 DIV	START
 	PUSH	0, GR3
 	ST	GR1, A
@@ -965,58 +965,58 @@ A	DS	1
 B	DS	1
 	END
 ;====================
-; �������֤�����ͥǡ������ɤ߹��ߡ�
-; �������Ƥ� GR2 ���ؤ����ɥ쥹�˳�Ǽ���륵�֥롼����
+; 入力装置から数値データを読み込み，
+; その内容を GR2 が指すアドレスに格納するサブルーチン
 RDINT	START
-	PUSH	0,GR1 ; GR1 �����Ƥ򥹥��å�������
-	PUSH	0,GR3 ; GR3 �����Ƥ򥹥��å�������
-	PUSH	0,GR4 ; GR4 �����Ƥ򥹥��å�������
-	PUSH	0,GR5 ; GR5 �����Ƥ򥹥��å�������
-	PUSH	0,GR6 ; GR6 �����Ƥ򥹥��å�������
-	LD	GR5,GR2 ; GR2 ���ؤ����Ϥ� GR5 �˥��ԡ�
-	LD	GR2,=0 ; GR2 ������
-	LD	GR3,=0 ; GR3 ������
-	IN	INAREA,INLEN ; ���Ϥ�������
-	; ���Ϥ�null���ɤ����Υ����å�
+	PUSH	0,GR1 ; GR1 の内容をスタックに退避
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	PUSH	0,GR5 ; GR5 の内容をスタックに退避
+	PUSH	0,GR6 ; GR6 の内容をスタックに退避
+	LD	GR5,GR2 ; GR2 が指す番地を GR5 にコピー
+	LD	GR2,=0 ; GR2 を初期化
+	LD	GR3,=0 ; GR3 を初期化
+	IN	INAREA,INLEN ; 入力を受け取る
+	; 入力がnullかどうかのチェック
 	CPA	GR3,INLEN
 	JZE	ERROR
-	; �ǽ��ʸ����'-'���ɤ����Υ����å�
+	; 最初の文字が'-'かどうかのチェック
 	LD	GR4,INAREA,GR3
 	LAD	GR3,1,GR3
-	LD	GR6,GR4 ; GR6 �����Ϥ��줿��Ƭ��ʸ������¸
-	CPL	GR4,=#002D ; '-'���ɤ���
+	LD	GR6,GR4 ; GR6 に入力された先頭の文字を保存
+	CPL	GR4,=#002D ; '-'かどうか
 	JZE	LOOP
-	CPL	GR4,='0' ; ���ͤ��ɤ����Υ����å�
+	CPL	GR4,='0' ; 数値かどうかのチェック
 	JMI	ERROR
 	CPL	GR4,='9' 
 	JPL	ERROR
-	XOR	GR4,=#0030 ; ���ͤ��ä����Ѵ�
+	XOR	GR4,=#0030 ; 数値だったら変換
 	ADDA	GR2,GR4
-	; �֤��Ǥ��ɤ߹�������ͤ�10�ܤ��ơ�
-	; �������ɤ߹�������ͤ�­�����פ򷫤��֤�
+	; 「すでに読み込んだ数値を10倍して，
+	; 新しく読み込んだ数値と足す．」を繰り返す
 LOOP	CPA	GR3,INLEN
-	JZE	CODE ; ���Ϥ��줿ʸ������GR3��Ʊ���Ǥ���Х롼�פ�ȴ����
+	JZE	CODE ; 入力された文字数とGR3が同じであればループを抜ける
 	LD	GR1,=10
-	CALL	MULT ; GR2 ���ͤ�10�ܤ���
+	CALL	MULT ; GR2 の値を10倍する
 	LD	GR4,INAREA,GR3
-	CPL	GR4,='0' ; ���ͤ��ɤ����Υ����å�
+	CPL	GR4,='0' ; 数値かどうかのチェック
 	JMI	ERROR
 	CPL	GR4,='9' 
 	JPL	ERROR
-	XOR	GR4,=#0030 ; GR4 �����Ƥ���ͤ��Ѵ�
-	ADDA	GR2,GR4 ; GR2 �� GR1 �����Ƥ�­��
-	LAD	GR3,1,GR3; GR3 (�ݥ���)�򥤥󥯥����
+	XOR	GR4,=#0030 ; GR4 の内容を数値に変換
+	ADDA	GR2,GR4 ; GR2 に GR1 の内容を足す
+	LAD	GR3,1,GR3; GR3 (ポインタ)をインクリメント
 	JUMP	LOOP
-	; �ǽ��ʸ���� '-'�Ǥ��ä����ϡ�-1�ܤ���
+	; 最初の文字が '-'であった場合は，-1倍する
 CODE	CPL	GR6,=#002D
 	JNZ	END
 	XOR	GR2,=#FFFF
 	LAD	GR2,1,GR2
 	JUMP	END
-	; ���顼����Ϥ���
+	; エラーを出力する
 ERROR	OUT	ERRSTR,ERRLEN
-END	ST	GR2,0,GR5 ; GR2 �����Ƥ� GR5 ���ؤ����Ϥ˳�Ǽ����
-	LD	GR2,GR5 ; GR5 ���ؤ����Ϥ� GR2 ���᤹
+END	ST	GR2,0,GR5 ; GR2 の内容を GR5 が指す番地に格納する
+	LD	GR2,GR5 ; GR5 が指す番地を GR2 に戻す
 	POP	GR6
 	POP	GR5
 	POP	GR4
@@ -1029,8 +1029,8 @@ INAREA	DS	6
 INLEN	DS	1
 	END
 ;====================
-; �������֤���ʸ�����ɤ߹��ߡ�
-; �������Ƥ� GR2 ���ؤ����ɥ쥹�˳�Ǽ���륵�֥롼����
+; 入力装置から文字を読み込み，
+; その内容を GR2 が指すアドレスに格納するサブルーチン
 RDCH	START
 	IN	INCHAR,INLEN
 	LD	GR1,INCHAR
@@ -1040,20 +1040,20 @@ INCHAR	DS	1
 INLEN	DS	1
 	END
 ;====================
-; �������֤��顤GR1��ʸ�������ɤ߹��ࡥ
-; �ɤ߹����ʸ����ϡ�GR2 ���ؤ����ɥ쥹�����˳�Ǽ�����
+; 入力装置から，GR1の文字数を読み込む．
+; 読み込んだ文字列は，GR2 が指すアドレスから順に格納される
 RDSTR	START
-	PUSH	0,GR3 ; GR3 �����Ƥ򥹥��å�������
-	PUSH	0,GR4 ; GR4 �����Ƥ򥹥��å�������
-	PUSH	0,GR5 ; GR5 �����Ƥ򥹥��å�������
-	LAD	GR4,0 ; GR4 ������
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	PUSH	0,GR5 ; GR5 の内容をスタックに退避
+	LAD	GR4,0 ; GR4 を初期化
 	IN	INSTR,INLEN
 LOOP	CPA	GR4,GR1
-	JZE	END ; GR1�ǻ��ꤵ�줿ʸ������Ķ�����齪���
+	JZE	END ; GR1で指定された文字数を超えたら終わり
 	CPA	GR4,INLEN
-	JZE	END ; ���Ϥ��줿ʸ������Ķ�����齪���
+	JZE	END ; 入力された文字数を超えたら終わり
 	LD	GR5,GR2
-	ADDA	GR5,GR4 ; ʸ���γ�Ǽ�����Ϥ�׻�
+	ADDA	GR5,GR4 ; 文字の格納先番地を計算
 	LD	GR3,INSTR,GR4
 	ST	GR3,0,GR5
 	LAD	GR4,1,GR4
@@ -1066,7 +1066,7 @@ INSTR	DS	256
 INLEN	DS	1
 	END
 ;====================
-; �������֤����ʸ�������Ԥޤ��ɤ����Ф����֥롼����
+; 入力装置からの文字列を改行まで読み飛ばすサブルーチン
 RDLN	START
 	IN	INAREA,INLEN
 	RET
@@ -1074,23 +1074,23 @@ INAREA	DS	256
 INLEN	DS	1
 	END
 ;====================
-; GR2 �����ơʿ��ͥǡ����ˤ�������֤˽񤭽Ф����֥롼����
-; ���Υ��֥롼���󤬸ƤФ줿�Ȥ���
-; GR7 �ˤϡ����������Ϥ���Ƭ���ɥ쥹����
-; GR6 �ˤϡ����߽��������Ϥ����äƤ���ʸ��������
-; ���줾���Ǽ����Ƥ��롥
+; GR2 の内容（数値データ）を出力装置に書き出すサブルーチン
+; このサブルーチンが呼ばれたとき，
+; GR7 には，出力用番地の先頭アドレスが，
+; GR6 には，現在出力用番地に入っている文字数が，
+; それぞれ格納されている．
 WRTINT  START
-	PUSH    0,GR1 ; GR1�����Ƥ򥹥��å�������
-        PUSH    0,GR2 ; GR2�����Ƥ򥹥��å�������
-	PUSH	0,GR3 ; GR3�����Ƥ򥹥��å�������
-	PUSH	0,GR2 ; ���ͥǡ�����⤦���٥����å�������
-	LD	GR3,=0 ; GR3 �ϥ���ǥå����Ȥ����Ѥ���
-	; ���ͥǡ���������Ǥ�����ϡ����ο����Ѵ�
+	PUSH    0,GR1 ; GR1の内容をスタックに退避
+        PUSH    0,GR2 ; GR2の内容をスタックに退避
+	PUSH	0,GR3 ; GR3の内容をスタックに退避
+	PUSH	0,GR2 ; 数値データをもう一度スタックに退避
+	LD	GR3,=0 ; GR3 はインデックスとして用いる
+	; 数値データが負数である場合は，正の数に変換
 	CPA	GR2,=0
 	JPL	LOOP1
 	XOR	GR2,=#FFFF
 	ADDA	GR2,=1
-	; ���ͥǡ������Ѵ����ʤ��顤�Хåե��˳�Ǽ
+	; 数値データを変換しながら，バッファに格納
 LOOP1	LD	GR1,GR2
 	LD	GR2,=10
 	CALL	DIV
@@ -1099,7 +1099,7 @@ LOOP1	LD	GR1,GR2
 	LAD	GR3,1,GR3
 	CPA	GR2,=0
 	JNZ	LOOP1
-	; ���ͥǡ���������Ǥ���С�'-'���ɲ�
+	; 数値データが負数であれば，'-'を追加
 	POP	GR2
 	CPA	GR2,=0
 	JZE	LOOP2
@@ -1107,7 +1107,7 @@ LOOP1	LD	GR1,GR2
 	LD	GR1,='-'
 	ST	GR1,BUFFER,GR3
 	LAD	GR3,1,GR3
-	; BUFFER ��ս�ˤ��ɤ�ʤ��顤�����ѥХåե��˳�Ǽ
+	; BUFFER を逆順にたどりながら，出力用バッファに格納
 LOOP2	LAD	GR3,-1,GR3
 	LD	GR1,BUFFER,GR3
 	LD	GR2,GR7
@@ -1123,39 +1123,39 @@ END	POP	GR3
 BUFFER	DS	6	
 	END
 ;====================
-; GR2 �����ơ�ʸ���ˤ�������֤˽񤭽Ф����֥롼����
-; ���Υ��֥롼���󤬸ƤФ줿�Ȥ���
-; GR7 �ˤϡ����������Ϥ���Ƭ���ɥ쥹����
-; GR6 �ˤϡ����߽��������Ϥ����äƤ���ʸ��������
-; ���줾���Ǽ����Ƥ��롥
+; GR2 の内容（文字）を出力装置に書き出すサブルーチン
+; このサブルーチンが呼ばれたとき，
+; GR7 には，出力用番地の先頭アドレスが，
+; GR6 には，現在出力用番地に入っている文字数が，
+; それぞれ格納されている．
 WRTCH	START
-	PUSH	0,GR1 ; GR1 �����Ƥ򥹥��å�������
+	PUSH	0,GR1 ; GR1 の内容をスタックに退避
 	LD	GR1,GR7
-	ADDA	GR1,GR6 ; GR1 �˼���ʸ�����Ǽ�������Ϥ�����
+	ADDA	GR1,GR6 ; GR1 に次の文字を格納する番地を代入
 	ST	GR2,0,GR1
 	LAD	GR6,1,GR6
 	POP	GR1
 	RET
 	END
 ;====================
-; GR2 �λؤ��������Ϥ��顤Ĺ�� GR1 ��ʸ�����������֤˽񤭽Ф����֥롼����
-; ���Υ��֥롼���󤬸ƤФ줿�Ȥ���
-; GR7 �ˤϡ����������Ϥ���Ƭ���ɥ쥹����
-; GR6 �ˤϡ����߽��������Ϥ����äƤ���ʸ��������
-; ���줾���Ǽ����Ƥ��롥
+; GR2 の指すメモリ番地から，長さ GR1 の文字列を出力装置に書き出すサブルーチン
+; このサブルーチンが呼ばれたとき，
+; GR7 には，出力用番地の先頭アドレスが，
+; GR6 には，現在出力用番地に入っている文字数が，
+; それぞれ格納されている．
 WRTSTR	START
-	PUSH	0,GR3 ; GR3 �����Ƥ򥹥��å�������
-	PUSH	0,GR4 ; GR4 �����Ƥ򥹥��å�������
-	PUSH	0,GR5 ; GR5 �����Ƥ򥹥��å�������
-	LAD	GR3, 0 ; GR3 �������ѿ��Ȥ����Ѥ���
+	PUSH	0,GR3 ; GR3 の内容をスタックに退避
+	PUSH	0,GR4 ; GR4 の内容をスタックに退避
+	PUSH	0,GR5 ; GR5 の内容をスタックに退避
+	LAD	GR3, 0 ; GR3 は制御変数として用いる
 LOOP	CPA	GR3,GR1
 	JZE	END
 	LD	GR4,GR2
-	ADDA	GR4,GR3 ; ���Ϥ���ʸ���γ�Ǽ���Ϥ�׻�
-	LD	GR5,0,GR4 ; ���Ϥ���ʸ����쥸�����˥��ԡ�
+	ADDA	GR4,GR3 ; 出力する文字の格納番地を計算
+	LD	GR5,0,GR4 ; 出力する文字をレジスタにコピー
 	LD	GR4,GR7
-	ADDA	GR4,GR6 ; ����������Ϥ�׻�
-	ST	GR5,0,GR4 ; �������֤˽񤭽Ф�
+	ADDA	GR4,GR6 ; 出力先の番地を計算
+	ST	GR5,0,GR4 ; 出力装置に書き出し
 	LAD	GR3,1,GR3
 	LAD	GR6,1,GR6
 	JUMP	LOOP
@@ -1165,8 +1165,8 @@ END	POP	GR5
 	RET
 	END
 ;====================
-; ���Ԥ�������֤˽񤭽Ф����֥롼����
-; �¼�Ū�ˤϡ�GR7�ǻϤޤ륢�ɥ쥹���Ϥ���Ĺ��GR6��ʸ�������Ϥ���
+; 改行を出力装置に書き出すサブルーチン
+; 実質的には，GR7で始まるアドレス番地から長さGR6の文字列を出力する
 WRTLN	START
 	PUSH	0,GR1
 	PUSH	0,GR2
@@ -1182,7 +1182,7 @@ LOOP	CPA	GR1,OUTLEN
 	LAD	GR1,1,GR1
 	JUMP	LOOP	
 END	OUT	OUTSTR,OUTLEN
-	LAD	GR6,0 ; ʸ�������Ϥ��ơ�GR6 ������
+	LAD	GR6,0 ; 文字列を出力して，GR6 を初期化
 	POP	GR3
 	POP	GR2
 	POP	GR1
