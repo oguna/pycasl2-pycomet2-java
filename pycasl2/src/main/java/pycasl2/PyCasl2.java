@@ -1,6 +1,9 @@
 package pycasl2;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.regex.Matcher;
@@ -75,7 +78,7 @@ public class PyCasl2 {
     private ByteCode[] assemble(File file) throws IOException {
         this.file = file;
         this.addr = 0;
-        this.fp = new BufferedReader(new FileReader(file));
+        this.fp = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8);
         this.currentLineNumber = -1;
         this.nextLine = new Instruction(null, "", null, -1, "");
         this.nextSrc = "";
@@ -232,11 +235,11 @@ public class PyCasl2 {
             return null;
         }
 
-        String re_label = "(?<label>[A-Za-z_][A-Za-z0-9_]*)?";
+        String re_label = "(?<label>[A-Z][A-Z0-9]{0,7})?";
         String re_op = "\\s+(?<op>[A-Z]+)";
-        String re_arg1 = "(?<arg1>=?(([-#]?[A-Za-z0-9_]+)|(\'.*\')))";
-        String re_arg2 = "(?<arg2>=?(([-#]?[A-Za-z0-9_]+)|(\'.*\')))";
-        String re_arg3 = "(?<arg3>=?(([-#]?[A-Za-z0-9_]+)|(\'.*\')))";
+        String re_arg1 = "(?<arg1>=?(([-#]?[A-Za-z0-9_]+)|('([^']|'')+')))";
+        String re_arg2 = "(?<arg2>=?(([-#]?[A-Za-z0-9_]+)|('([^']|'')+')))";
+        String re_arg3 = "(?<arg3>=?(([-#]?[A-Za-z0-9_]+)|('([^']|'')+')))";
         String re_args = "(\\s+" + re_arg1 + "(\\s*,\\s*" + re_arg2 + "(\\s*,\\s*" + re_arg3 + ")?)?)?";
         String re_comment = "(\\s*(;(?<comment>.+)?)?)?";
         String pattern = "(^" + re_label + re_op + re_args + ")?" + re_comment;
@@ -378,7 +381,7 @@ public class PyCasl2 {
         if (arg.startsWith("#")) {
             value = new int[]{Integer.parseInt(arg.substring(1), 16)};
         } else if (arg.startsWith("'")) {
-            value = arg.substring(1, arg.length() - 1).chars().toArray();
+            value = arg.substring(1, arg.length() - 1).replace("''", "'").chars().toArray();
         } else {
             value = new int[]{a2l(Integer.parseInt(arg))};
         }
