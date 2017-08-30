@@ -167,7 +167,7 @@ public class PyCasl2 {
                 break;
             }
         }
-        this.nextLine = this.splitLine(line, this.currentLineNumber + 1);
+        this.nextLine = splitLine(line, this.currentLineNumber + 1);
         return current;
     }
 
@@ -226,7 +226,7 @@ public class PyCasl2 {
         return new ByteCode(code, byteCode.addr, byteCode.lineNumber, byteCode.src);
     }
 
-    private Instruction splitLine(String line, int lineNumber) {
+    private static Instruction splitLine(String line, int lineNumber) {
         Matcher result = Pattern.compile("^\\s*$").matcher(line);
         if (result.matches()) {
             return null;
