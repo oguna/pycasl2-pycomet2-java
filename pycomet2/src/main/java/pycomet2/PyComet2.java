@@ -6,13 +6,12 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 
 public class PyComet2 implements Util {
     static class InvalidOperation extends RuntimeException {
+        private static final long serialVersionUID = 1L;
         private final int address;
 
         public InvalidOperation(int address) {
@@ -578,8 +577,8 @@ public class PyComet2 implements Util {
                     comet2.waitForCommand();
                 }
             } catch (IOException e) {
-                System.err.println("An I/O error occurred while reading comet file.");
-                System.exit(1);
+                System.err.println("An I/O error occurred while reading comet file: " + argList.get(0));
+                e.printStackTrace();
             }
         }
     }

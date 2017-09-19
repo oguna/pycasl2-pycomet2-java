@@ -1,7 +1,8 @@
 package pycasl2;
 
 class Error extends RuntimeException {
-    private final int lineNum;
+    private static final long serialVersionUID = 1L;
+		private final int lineNum;
     private final String src;
 
     Error(int lineNum, String src, String message) {
