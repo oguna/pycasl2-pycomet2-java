@@ -1,7 +1,6 @@
 package pycasl2;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
@@ -514,8 +513,8 @@ public class PyCasl2 {
                 }
                 casl2.write(comName, x);
             } catch (Exception e) {
-                System.err.println(e.getMessage());
-                System.exit(1);
+                System.err.println("An I/O error occurred while reading casl file: " + argList.get(0));
+                e.printStackTrace();
             }
         }
     }
