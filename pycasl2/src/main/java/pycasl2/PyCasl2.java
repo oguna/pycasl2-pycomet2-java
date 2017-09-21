@@ -465,7 +465,7 @@ public class PyCasl2 {
         }
     }
 
-    public static void execute(final String inputFileName, final String outputFileName, final String... args) {
+    public static void execute(final String inputFileName, final String outputFileName) {
     	PyCasl2 casl2 = new PyCasl2();
         ByteCode[] x;
 		try {
