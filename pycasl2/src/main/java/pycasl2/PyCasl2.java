@@ -452,8 +452,8 @@ public class PyCasl2 {
         return arg.startsWith("GR");
     }
 
-    private void write(String filename, ByteCode[] codeList) {
-        try (FileOutputStream fos = new FileOutputStream(new File(filename));
+    private void write(File file, ByteCode[] codeList) {
+        try (FileOutputStream fos = new FileOutputStream(file);
              DataOutputStream dos = new DataOutputStream(fos)) {
             for (ByteCode code : codeList) {
                 for (Object i : code.code) {
@@ -465,6 +465,16 @@ public class PyCasl2 {
         }
     }
 
+    public static void execute(final File inputFile, final File outputFile) {
+		try {
+            PyCasl2 casl2 = new PyCasl2();
+            ByteCode[] x = casl2.assemble(inputFile);
+	        casl2.write(outputFile, x);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
     public static void main(String[] args) {
         String usage = "Usage: " + PyCasl2.class.getSimpleName() + " [options] input.cas [output.com]";
         List<String> argList = new ArrayList<>();
@@ -511,7 +521,7 @@ public class PyCasl2 {
                 if (dump) {
                     casl2.dump(x);
                 }
-                casl2.write(comName, x);
+                casl2.write(new File(comName), x);
             } catch (Exception e) {
                 System.err.println("An I/O error occurred while reading casl file: " + argList.get(0));
                 e.printStackTrace();

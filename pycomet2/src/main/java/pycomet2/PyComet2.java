@@ -1,8 +1,15 @@
 package pycomet2;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.*;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
@@ -10,6 +17,8 @@ import java.util.stream.Collectors;
 
 
 public class PyComet2 implements Util {
+    public boolean showInputArrow = true;
+
     static class InvalidOperation extends RuntimeException {
         private static final long serialVersionUID = 1L;
         private final int address;
@@ -88,7 +97,8 @@ public class PyComet2 implements Util {
     private boolean isCountStep;
     private boolean isAutoDump;
     private boolean exiting = false;
-    public Scanner scanner = new Scanner(System.in);
+    public Writer out = null;
+    public BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
     private PyComet2() {
         List<Instruction> instList = Arrays.asList(
@@ -227,23 +237,22 @@ public class PyComet2 implements Util {
         }
     }
 
-    private void load(String filename) throws IOException {
-        load(filename, false);
+    private void load(File file) throws IOException {
+        load(file, false);
     }
 
-    private void load(String filename, boolean quiet) throws IOException {
+    private void load(File file, boolean quiet) throws IOException {
         if (!quiet) {
-            System.err.print(String.format("load %s ...", filename));
+            System.err.print(String.format("load %s ... ", file));
             System.err.flush();
         }
         this.initialize();
-        File file = new File(filename);
         long size = Files.size(file.toPath());
         if ((size & 1) == 1) {
             throw new RuntimeException();
         }
         int[] tmp = new int[(int)(size / 2)];
-        try (InputStream is = new FileInputStream(new File(filename));
+        try (InputStream is = new FileInputStream(file);
              DataInputStream dis = new DataInputStream(is)) {
             for (int i = 0; i < tmp.length; i++) {
                 tmp[i] = dis.readUnsignedShort();
@@ -406,11 +415,11 @@ public class PyComet2 implements Util {
         this.printStatus();
     }
 
-    private void waitForCommand() {
+    private void waitForCommand() throws IOException {
         while (!this.exiting) {
             System.err.print("pycomet2> ");
             System.err.flush();
-            String line = scanner.nextLine();
+            String line = in.readLine();
             String[] args = line.split("\\s");
             if (line.startsWith("q")) {
                 break;
@@ -478,6 +487,24 @@ public class PyComet2 implements Util {
         System.err.println("r             Strat execution of program.");
         System.err.println("s             Step execution.");
         System.err.println("st            Dump 128 words of stack image.");
+    }
+
+    public static void execute(final File inputFile, final File outputFile, final String... args) {
+        try {
+            final StringWriter out = new StringWriter();
+            final StringReader in = new StringReader(String.join(System.lineSeparator(), args));
+            final PyComet2 comet2 = new PyComet2();
+            comet2.out = out;
+            comet2.in = new BufferedReader(in);
+            comet2.showInputArrow = false;
+            comet2.setAutoDump(false);
+            comet2.setCountStep(false);
+            comet2.load(inputFile, true);
+            comet2.run();
+            Files.write(outputFile.toPath(), out.toString().getBytes(StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
@@ -565,14 +592,15 @@ public class PyComet2 implements Util {
             comet2.setAutoDump(dump);
             comet2.setCountStep(countStep);
             try {
+                File file = new File(argList.get(0));
                 if (watchVariables != null) {
-                    comet2.load(argList.get(0), true);
+                    comet2.load(file, true);
                     comet2.watch(watchVariables, decimalFlag);
                 } else if (run) {
-                    comet2.load(argList.get(0), true);
+                    comet2.load(file, true);
                     comet2.run();
                 } else {
-                    comet2.load(argList.get(0));
+                    comet2.load(file);
                     comet2.printStatus();
                     comet2.waitForCommand();
                 }

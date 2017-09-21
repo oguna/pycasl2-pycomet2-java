@@ -1,5 +1,8 @@
 package pycomet2;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
+
 class OUT extends Instruction {
     OUT(PyComet2 machine) {
         super(machine, 0x91, "OUT", ArgType.StrLen);
@@ -21,7 +24,16 @@ class OUT extends Instruction {
                 this.m.dump(s);
             }
         }
-        System.out.println(sb.toString());
+        try {
+            String line = sb.toString() + "\n";
+            if (this.m.out == null) {
+                System.out.print(line);
+            } else {
+                this.m.out.write(line);
+            }
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
         this.m.PR += 3;
     }
 }
