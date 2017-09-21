@@ -465,6 +465,17 @@ public class PyCasl2 {
         }
     }
 
+    public static void execute(final String inputFileName, final String outputFileName, final String... args) {
+    	PyCasl2 casl2 = new PyCasl2();
+        ByteCode[] x;
+		try {
+			x = casl2.assemble(new File(inputFileName));
+	        casl2.write(outputFileName, x);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    }
+    
     public static void main(String[] args) {
         String usage = "Usage: " + PyCasl2.class.getSimpleName() + " [options] input.cas [output.com]";
         List<String> argList = new ArrayList<>();

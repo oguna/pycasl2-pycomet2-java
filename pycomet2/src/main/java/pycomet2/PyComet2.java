@@ -1,8 +1,24 @@
 package pycomet2;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.io.UncheckedIOException;
+import java.io.Writer;
 import java.nio.file.Files;
-import java.util.*;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.function.Supplier;
@@ -479,6 +495,51 @@ public class PyComet2 implements Util {
         System.err.println("s             Step execution.");
         System.err.println("st            Dump 128 words of stack image.");
     }
+
+    public static void execute(final String inputFileName, final String outputFileName, final String... args) {
+    	final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    	final PrintStream stdout = System.out;
+    	System.setOut(new PrintStream(out));
+
+		final StandardInputSnatcher in = new StandardInputSnatcher();
+		final InputStream stdin = System.in;
+		System.setIn(in);
+		for (final String line : args) {
+			in.inputln(line);
+		}
+
+        try {
+    	PyComet2 comet2 = new PyComet2();
+        comet2.setAutoDump(false);
+        comet2.setCountStep(false);
+		comet2.load(inputFileName, true);
+        comet2.run();
+        Files.write(Paths.get(outputFileName), out.toByteArray());
+
+        } catch (IOException e) {
+			e.printStackTrace();
+		}
+        System.setOut(stdout);
+        System.setIn(stdin);
+    }
+
+	static class StandardInputSnatcher extends InputStream {
+		private final StringBuilder buffer = new StringBuilder();
+
+		public void inputln(String str) {
+			this.buffer.append(str).append(System.lineSeparator());
+		}
+
+		@Override
+		public int read() throws IOException {
+			if (this.buffer.length() == 0) {
+				return -1;
+			}
+			final int result = this.buffer.charAt(0);
+			this.buffer.deleteCharAt(0);
+			return result;
+		}
+	}
 
     public static void main(String[] args) {
         boolean countStep = false;
